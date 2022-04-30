@@ -27,14 +27,16 @@ header {
     color: #FFFFFF;
 }
 
-header h1.logo {
+header .logo {
     font-weight: 700;
     font-size: 48px;
     line-height: 65px;
     color: #000000;
+
+    cursor: pointer;
 }
 
-header h1.logo span {
+header .logo span {
     color: var(--green)
 }
 
@@ -66,6 +68,7 @@ header nav button.nav-item {
 
     background: rgba(126, 211, 33, 0.4);
     border-radius: 15px;
+    border-width: 0;
 
     color: #1C4701;
 }
