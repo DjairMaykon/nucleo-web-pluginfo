@@ -1,0 +1,33 @@
+/* Main styles */
+main {
+    display: flex;
+    align-items: center;
+
+    margin: 20px 150px;
+}
+
+
+main section h1 {
+    margin-bottom: 20px;
+
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 65px;
+
+    color: #000000;
+}
+
+main section button {
+    padding: 13px 55px;
+
+    background: #7ED321;
+    border-radius: 15px;
+    border-width: 0;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #1C4701;
+    
+    cursor: pointer;
+}
