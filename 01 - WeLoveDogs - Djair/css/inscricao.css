@@ -1,0 +1,90 @@
+/* Main styles */
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    margin: 20px 200px 0px;
+}
+
+main h1 {
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 65px;
+
+    color: #000000;
+}
+
+main section {
+    display: flex;
+
+    margin: 20px;
+}
+
+main section form .form-item {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+}
+
+main section form input,
+main section form textarea {
+    width: 400px;
+    height: 23px;
+    background: #FFFFFF;
+    border: 1px solid #9F9F9F;
+    border-radius: 7px;
+
+    padding: 10px;
+}
+
+
+main section form input::placeholder,
+main section form textarea::placeholder {
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: left;
+    color: #9F9F9F;
+}
+
+main section form input[type=number] {
+    -moz-appearance: textfield;
+}
+
+main section form textarea {
+    height: 160px;
+
+    resize: none;
+}
+
+main section form label {
+    width: 124px;
+    height: 50px;
+
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+
+    color: #000000;
+}
+
+main section form .button-submit {
+    float: right;
+
+    width: 141px;
+    height: 42px;
+
+    background: #7ED321;
+    border-radius: 10px;
+
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #1C4701;
+    cursor: pointer;
+}
