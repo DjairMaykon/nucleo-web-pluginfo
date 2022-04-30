@@ -31,3 +31,7 @@ main section button {
     
     cursor: pointer;
 }
+
+main section button:hover {
+    background: #85FF00;
+}
