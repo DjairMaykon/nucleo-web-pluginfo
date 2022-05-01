@@ -12,7 +12,6 @@ main section {
     flex-direction: column;
     gap: 25px;
 
-
     width: 371px;
     height: 351px;
 }
@@ -26,8 +25,7 @@ main section h1 {
 }
 
 main section button {
-    width: 220px;
-    height: 51px;
+    width: fit-content;
     padding: 13px 55px;
 
     background: #7ED321;
