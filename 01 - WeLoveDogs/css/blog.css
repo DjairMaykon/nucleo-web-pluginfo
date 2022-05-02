@@ -14,20 +14,9 @@ main h1 {
     color: var(--text-dark);
 }
 
-main section.posts {
-    display: flex;
-    flex-direction: column;
-    gap: 45px;
-}
-
 main section.posts article {
     display: flex;
-}
-
-main section.posts article section {
-    display: flex;
-    flex-direction: column;
-    gap: 23px;
+    margin-bottom: 45px;
 }
 
 main section.posts article section h2 {
@@ -36,6 +25,7 @@ main section.posts article section h2 {
     line-height: 44px;
 
     color: var(--text-dark);
+    margin-bottom: 23px;
 }
 
 main section.posts article section p {
