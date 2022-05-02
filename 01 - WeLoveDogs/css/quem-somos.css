@@ -14,7 +14,7 @@ main section h1 {
 
     text-transform: uppercase;
 
-    color: #000000;
+    color: var(--text-dark);
 }
 
 main section p {
@@ -26,5 +26,5 @@ main section p {
     line-height: 22px;
     text-align: justify;
 
-    color: #000000;
+    color: var(--text-dark);
 }

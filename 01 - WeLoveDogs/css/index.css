@@ -21,25 +21,25 @@ main section h1 {
     font-size: 48px;
     line-height: 65px;
 
-    color: #000000;
+    color: var(--text-dark);
 }
 
 main section button {
     width: fit-content;
     padding: 13px 55px;
 
-    background: #7ED321;
+    background: var(--green-primary);
     border-radius: 15px;
     border-width: 0;
 
     font-weight: 700;
     font-size: 18px;
     line-height: 25px;
-    color: #1C4701;
+    color: var(--text-green);
     
     cursor: pointer;
 }
 
 main section button:hover {
-    background: #85FF00;
+    background: var(--green-secondary);
 }

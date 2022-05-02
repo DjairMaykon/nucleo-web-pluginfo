@@ -11,7 +11,7 @@ main h1 {
     font-size: 48px;
     line-height: 65px;
 
-    color: #000000;
+    color: var(--text-dark);
 }
 
 main section.posts {
@@ -35,7 +35,7 @@ main section.posts article section h2 {
     font-size: 32px;
     line-height: 44px;
 
-    color: #000000;
+    color: var(--text-dark);
 }
 
 main section.posts article section p {
@@ -47,5 +47,5 @@ main section.posts article section p {
     line-height: 22px;
     text-align: justify;
 
-    color: #000000;
+    color: var(--text-dark);
 }

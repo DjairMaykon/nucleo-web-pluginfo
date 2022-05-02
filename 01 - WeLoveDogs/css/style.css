@@ -1,3 +1,16 @@
+/* Page Theme */
+:root {
+    --green-primary: #7ED321;
+    --green-secondary: #96fd27;
+    --green-40: #7ed32166;
+    --text-green: #1C4701;
+    
+    --surface-light: #FFFFFF;
+
+    --text-dark: #000000;
+    --text-gray: #9F9F9F;
+}
+
 /* Page Reset Styles */
 * {
     border: 0;
@@ -8,7 +21,7 @@
 
 /* Page base styles */
 body {
-    font-family: 'Open Sans';
+    font-family: 'Open Sans', sans-serif;
     font-style: normal;
 }
 
@@ -18,21 +31,19 @@ header nav {
     justify-content: space-between;
 
     padding: 27px 15px;
-
-    color: #FFFFFF;
 }
 
 header nav .logo {
     font-weight: 700;
     font-size: 48px;
     line-height: 65px;
-    color: #000000;
+    color: var(--text-dark);
 
     cursor: pointer;
 }
 
 header nav .logo span {
-    color: #7ED321;
+    color: var(--green-primary);
 }
 
 header nav ul {
@@ -53,25 +64,25 @@ header nav ul li button {
     font-weight: 700;
     font-size: 16px;
     line-height: 22px;
-    color: #000000;
+    color: var(--text-dark);
 
     cursor: pointer;
 }
 
 header nav ul li a:hover {
-    color: #4F4F4F;
+    color: var(--text-gray);
 } 
 
 header nav ul li button {
     padding: 9px 32px;
 
-    background: rgba(126, 211, 33, 0.4);
+    background: var(--green-40);
     border-radius: 15px;
     border-width: 0;
 
-    color: #1C4701;
+    color: var(--text-green);
 }
 
 header nav ul li button:hover {
-    background: rgba(126, 211, 33, 0.9);
+    background: var(--green-primary);
 }
