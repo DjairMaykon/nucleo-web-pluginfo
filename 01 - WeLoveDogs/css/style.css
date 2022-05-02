@@ -86,3 +86,7 @@ header nav ul li button {
 header nav ul li button:hover {
     background: var(--green-primary);
 }
+
+header {
+    margin-bottom: 30px;
+}
