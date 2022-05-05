@@ -3,45 +3,43 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
+  gap: 3.47vw;
 }
 
 main h1 {
   font-weight: 700;
-  /* font-size: 48px; */
-  font-size: calc(24px + (48 - 24) * ((100vw - 412px) / (1440 - 412)));
-  /* line-height: 65px; */
-  line-height: calc(32.5px + (65 - 32.5) * ((100vw - 412px) / (1440 - 412)));
+  font-size: calc(2.4rem + (48 - 24) * ((100vw - 412px) / (1440 - 412)));
+  line-height: calc(3.25rem + (65 - 32.5) * ((100vw - 412px) / (1440 - 412)));
 
   color: var(--text-dark);
 }
 
 main section.posts article {
   display: flex;
-  margin-bottom: 45px;
+  margin-bottom: 3.125vw;
 }
 
 main section.posts article section h2 {
   font-weight: 700;
-  /* font-size: 32px; */
-  font-size: calc(16px + (32 - 16) * ((100vw - 412px) / (1440 - 412)));
-  /* line-height: 44px; */
-  line-height: calc(22px + (44 - 22) * ((100vw - 412px) / (1440 - 412)));
+  font-size: calc(1.6rem + (32 - 16) * ((100vw - 412px) / (1440 - 412)));
+  line-height: calc(2.2rem + (44 - 22) * ((100vw - 412px) / (1440 - 412)));
 
   color: var(--text-dark);
-  margin-bottom: 23px;
+  margin-bottom: 1.59vw;
 }
 
 main section.posts article section p {
-  width: 778px;
-  height: 185px;
+  width: 54.02vw;
 
   font-weight: 400;
-  /* font-size: 16px; */
-  font-size: calc(8px + (16 - 8) * ((100vw - 412px) / (1440 - 412)));
-  /* line-height: 22px; */
-  line-height: calc(11px + (22 - 11) * ((100vw - 412px) / (1440 - 412)));
+  font-size: calc(0.8rem + (16 - 8) * ((100vw - 412px) / (1440 - 412)));
+  line-height: calc(1.1rem + (22 - 11) * ((100vw - 412px) / (1440 - 412)));
   text-align: justify;
 
   color: var(--text-dark);
+}
+
+main section.posts article figure img {
+  width: 21.11vw;
+  height: 15.83vw;
 }
