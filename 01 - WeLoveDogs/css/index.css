@@ -1,45 +1,49 @@
 /* Main styles */
 main {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-    gap: 29px;
+  gap: 29px;
 }
 
 main section {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 
-    width: 371px;
-    height: 351px;
+  width: 371px;
+  height: 351px;
 }
 
 main section h1 {
-    font-weight: 700;
-    font-size: 48px;
-    line-height: 65px;
+  font-weight: 700;
+  /* font-size: 48px; */
+  font-size: calc(24px + (48 - 24) * ((100vw - 412px) / (1440 - 412)));
+  /* line-height: 65px; */
+  line-height: calc(32.5px + (65 - 32.5) * ((100vw - 412px) / (1440 - 412)));
 
-    color: var(--text-dark);
+  color: var(--text-dark);
 }
 
 main section button {
-    width: fit-content;
-    padding: 13px 55px;
+  width: fit-content;
+  padding: 13px 55px;
 
-    background: var(--green-primary);
-    border-radius: 15px;
-    border-width: 0;
+  background: var(--green-primary);
+  border-radius: 15px;
+  border-width: 0;
 
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 25px;
-    color: var(--text-green);
-    
-    cursor: pointer;
+  font-weight: 700;
+  /* font-size: 18px; */
+  font-size: calc(9px + (18 - 9) * ((100vw - 412px) / (1440 - 412)));
+  /* line-height: 25px; */
+  line-height: calc(12.5px + (25 - 12.5) * ((100vw - 412px) / (1440 - 412)));
+  color: var(--text-green);
+
+  cursor: pointer;
 }
 
 main section button:hover {
-    background: var(--green-secondary);
+  background: var(--green-secondary);
 }
