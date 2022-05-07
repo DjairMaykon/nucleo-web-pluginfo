@@ -14,14 +14,15 @@ main section h1 {
   text-transform: uppercase;
 
   color: var(--text-dark);
+  margin-bottom: 1vw;
 }
 
 main section p {
   width: 47.7vw;
 
   font-weight: 400;
-  font-size: calc(0.8rem + (16 - 8) * ((100vw - 412px) / (1440 - 412)));
-  line-height: calc(1.1rem + (22 - 11) * ((100vw - 412px) / (1440 - 412)));
+  font-size: calc(1rem + (16 - 10) * ((100vw - 412px) / (1440 - 412)));
+  line-height: calc(1.5rem + (22 - 15) * ((100vw - 412px) / (1440 - 412)));
   text-align: justify;
 
   color: var(--text-dark);
@@ -30,4 +31,10 @@ main section p {
 main section figure img {
   width: 24.58vw;
   height: 18.47vw;
+}
+
+@media screen and (max-width: 768px) {
+  main section p {
+    width: 60vw;
+  }
 }

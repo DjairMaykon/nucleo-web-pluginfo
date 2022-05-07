@@ -32,8 +32,8 @@ main section.posts article section p {
   width: 54.02vw;
 
   font-weight: 400;
-  font-size: calc(0.8rem + (16 - 8) * ((100vw - 412px) / (1440 - 412)));
-  line-height: calc(1.1rem + (22 - 11) * ((100vw - 412px) / (1440 - 412)));
+  font-size: calc(1rem + (16 - 10) * ((100vw - 412px) / (1440 - 412)));
+  line-height: calc(1.5rem + (22 - 15) * ((100vw - 412px) / (1440 - 412)));
   text-align: justify;
 
   color: var(--text-dark);

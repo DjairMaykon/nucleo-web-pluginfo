@@ -42,8 +42,8 @@ main section form .form-item {
 
 main section form input,
 main section form textarea {
-  width: 27.08vw;
-  height: 1.18vw;
+  width: 29.09vw;
+  height: 2.98vw;
   background: var(--surface-light);
   border: 1px solid var(--text-gray);
   border-radius: 0.48vw;
@@ -106,4 +106,30 @@ main section form .button-submit:hover {
 main section figure img {
   width: 40.41vw;
   height: 30.27vw;
+}
+
+@media screen and (max-width: 768px) {
+  main section {
+    flex-direction: column;
+    align-items: center;
+  }
+  main section form .form-item {
+    flex-direction: column;
+  }
+  main section form label {
+    width: fit-content;
+  }
+  main section form input,
+  main section form textarea {
+    width: 60vw;
+    height: 5vw;
+  }
+  main section form textarea {
+    height: 25vw;
+  }
+
+  main section form .button-submit {
+    width: 15vw;
+    height: 4vw;
+  }
 }
