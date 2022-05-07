@@ -31,3 +31,52 @@ header.page-header h1 {
   letter-spacing: -0.02em;
   color: #202020;
 }
+/* Toogle theme */
+header.page-header .toogle-mode-button-container {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+header.page-header .toogle-mode-button-container p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #202020;
+}
+header.page-header .toogle-mode-button-container input {
+  display: none;
+}
+header.page-header .toogle-mode-button-container label {
+  position: relative;
+  width: 40px;
+  height: 22px;
+
+  background: #e5e5e5;
+  border: 1px solid #3c3b3a;
+  border-radius: 50px;
+
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+}
+header.page-header .toogle-mode-button-container label::before {
+  content: "";
+  display: block;
+  width: 17.25px;
+  height: 17.25px;
+
+  background: #3c3b3a;
+  border-radius: 50%;
+
+  position: absolute;
+  top: 7%;
+  left: 4%;
+  transition: all 0.2s ease;
+}
+header.page-header .toogle-mode-button-container input:checked + label {
+  background: #faf4e6;
+  border-color: #222222;
+}
+header.page-header .toogle-mode-button-container input:checked + label::before {
+  left: 50%;
+}
