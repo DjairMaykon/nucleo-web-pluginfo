@@ -1,0 +1,15 @@
+/* Page Reset Styles */
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+/* Page base styles */
+:root {
+  font-family: "Be Vietnam", sans-serif;
+  font-style: normal;
+  font-size: 62.5%;
+}
