@@ -10,7 +10,7 @@ function onToggleTheme() {
   }
 }
 
-function toogleMenu() {
+function closeMenu() {
   var checkBox = document.getElementById("toogle-menu-checkbox");
-  checkBox.checked = !checkBox.checked;
+  checkBox.checked = false;
 }
