@@ -53,8 +53,10 @@
   line-height: 25px;
   text-align: justify;
   color: var(--color-secondary);
+
+  margin-bottom: 25px;
 }
-#page-main .postagens article button {
+#page-main .postagens article section button {
   width: 100%;
   padding: 16px 30px;
 
@@ -72,4 +74,32 @@
 #page-main .postagens article button:hover {
   background: var(--surface-secondary);
   color: var(--color-primary-hover);
+}
+
+@media screen and (min-width: 1000px) {
+  #page-main .postagens {
+    gap: 36px;
+  }
+  #page-main .postagens header {
+    align-items: flex-start;
+  }
+  #page-main .postagens article {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  #page-main .postagens article img {
+    width: 640px;
+    height: 370px;
+  }
+  #page-main .postagens article section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  #page-main .postagens article:nth-child(odd) img {
+    order: 2;
+  }
+  #page-main .postagens article button {
+    width: fit-content;
+  }
 }
