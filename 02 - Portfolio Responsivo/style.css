@@ -257,23 +257,30 @@ main.page-main {
   height: 1px;
   background-color: var(--color-primary);
 }
-#section-1 p {
-  font-weight: 400;
-  font-size: 17px;
-  line-height: 25px;
-
-  color: var(--color-secondary);
-}
 #section-1 main {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
 }
-#section-1 .callout-container {
+#section-1 main p {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 25px;
+
+  color: var(--color-secondary);
+}
+#section-1 main p strong {
+  color: var(--color-primary);
+  font-weight: 400;
+}
+:root.dark #section-1 main p strong {
+  text-decoration: underline;
+}
+#section-1 main .callout-container {
+  align-self: flex-start;
   padding: 20px;
-  width: 283px;
-  height: 72px;
+  width: fit-content;
 
   background: var(--surface-secondary);
   border-radius: 10px;
@@ -281,10 +288,10 @@ main.page-main {
   display: flex;
   gap: 10px;
 }
-#section-1 .callout-container path {
+#section-1 main .callout-container path {
   fill: var(--color-primary);
 }
-#section-1 .callout-container span {
+#section-1 main .callout-container span {
   font-weight: 400;
   font-size: 12px;
   line-height: 16px;
