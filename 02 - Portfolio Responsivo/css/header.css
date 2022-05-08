@@ -55,7 +55,7 @@ header.page-header .toogle-mode-container label::before {
   border-radius: 50%;
 
   position: absolute;
-  top: 7%;
+  top: 5%;
   left: 4%;
   transition: all 0.2s ease;
 }
@@ -107,6 +107,11 @@ header.page-header nav ul.links li {
   line-height: 20px;
   color: var(--color-primary);
 }
+header.page-header nav ul.social {
+  display: flex;
+  gap: 100px;
+  justify-content: center;
+}
 header.page-header nav ul.social li path {
   fill: var(--color-primary);
 }
@@ -114,11 +119,6 @@ header.page-header nav ul.links li:hover,
 header.page-header nav ul.social li:hover path {
   color: var(--color-primary-hover);
   fill: var(--color-primary-hover);
-}
-header.page-header nav ul.social {
-  display: flex;
-  gap: 100px;
-  justify-content: center;
 }
 
 /* toggle menu button */
@@ -191,4 +191,38 @@ header.page-header
   .toogle-menu-lines:last-child {
   margin-top: 0px;
   transform: rotate(-45deg);
+}
+
+@media screen and (min-width: 1000px) {
+  header.page-header {
+    padding: 30px 80px;
+    gap: 50px;
+  }
+
+  header.page-header .toogle-menu-container {
+    display: none;
+  }
+
+  header.page-header nav {
+    flex: 1;
+    position: inherit;
+    width: auto;
+    height: auto;
+    margin: 0;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    transform: none;
+  }
+
+  header.page-header nav ul.links {
+    flex-direction: row;
+    gap: 20px;
+    padding: 0;
+  }
+  header.page-header nav ul.social {
+    gap: 30px;
+  }
 }
