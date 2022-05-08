@@ -22,6 +22,7 @@ main.page-main .postagens header p {
   font-weight: 400;
   font-size: 17px;
   line-height: 25px;
+  text-align: justify;
   color: var(--color-secondary);
 }
 main.page-main .postagens article {
@@ -50,6 +51,7 @@ main.page-main .postagens article section p {
   font-weight: 400;
   font-size: 17px;
   line-height: 25px;
+  text-align: justify;
   color: var(--color-secondary);
 }
 main.page-main .postagens article button {

@@ -50,7 +50,7 @@ main.page-main {
   font-weight: 400;
   font-size: 17px;
   line-height: 25px;
-
+  text-align: justify;
   color: var(--color-secondary);
 }
 #section-1 main p strong {
