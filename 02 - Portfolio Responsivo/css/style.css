@@ -1,13 +1,17 @@
 :root {
   --color-primary: #0065ff;
+  --color-primary-hover: rgba(0, 101, 255, 0.6);
   --color-secondary: #202020;
+  --color-secondary-hover: rgba(32, 32, 32, 0.6);
   --surface-primary: #ffffff;
   --surface-secondary: #f8f9fa;
 }
 
 :root.dark {
   --color-primary: #faf4e6;
+  --color-primary-hover: rgba(250, 244, 230, 0.6);
   --color-secondary: #faf4e6;
+  --color-secondary-hover: rgba(250, 244, 230, 0.6);
   --surface-primary: #222222;
   --surface-secondary: #3c3b3a;
 }
