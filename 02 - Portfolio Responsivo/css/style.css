@@ -1,0 +1,34 @@
+:root {
+  --color-primary: #0065ff;
+  --color-secondary: #202020;
+  --surface-primary: #ffffff;
+  --surface-secondary: #f8f9fa;
+}
+
+:root.dark {
+  --color-primary: #faf4e6;
+  --color-secondary: #faf4e6;
+  --surface-primary: #222222;
+  --surface-secondary: #3c3b3a;
+}
+
+/* Page Reset Styles */
+* {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  box-sizing: border-box;
+  color: inherit;
+}
+
+/* Page base styles */
+:root {
+  font-family: "Be Vietnam", sans-serif;
+  font-style: normal;
+  font-size: 62.5%;
+}
+
+body {
+  background-color: var(--surface-primary);
+}
