@@ -1,4 +1,5 @@
 onToggleTheme();
+
 function onToggleTheme() {
   var checkBox = document.getElementById("toogle-mode-button");
 
@@ -7,4 +8,9 @@ function onToggleTheme() {
   } else {
     document.documentElement.classList.remove("dark");
   }
+}
+
+function toogleMenu() {
+  var checkBox = document.getElementById("toogle-menu-checkbox");
+  checkBox.checked = !checkBox.checked;
 }
