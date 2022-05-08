@@ -87,6 +87,13 @@
 
   color: var(--color-secondary);
 }
+#section-1 main span strong {
+  color: var(--color-primary);
+  font-weight: 400;
+}
+#section-1 main span strong a:hover {
+  color: var(--color-primary-hover);
+}
 #section-1 hr {
   width: 100%;
   height: 1px;
