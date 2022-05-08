@@ -16,7 +16,6 @@ function onToggleTheme(onDarkTheme = false) {
 function onToggleMenu(closeMenu = false) {
   var checkBox = document.getElementById("toogle-menu-checkbox");
 
-  console.log(checkBox.checked);
   closeMenu && (checkBox.checked = false);
 
   if (checkBox.checked == false) {
