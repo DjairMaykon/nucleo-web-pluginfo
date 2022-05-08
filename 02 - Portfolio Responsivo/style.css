@@ -217,7 +217,7 @@ header.page-header #toogle-menu-checkbox:checked ~ nav {
 
 /* main styles */
 main.page-main {
-  margin: 80px 40px 0;
+  margin: 80px 40px 25px;
 
   display: flex;
   flex-direction: column;
@@ -297,26 +297,72 @@ main.page-main {
   background-color: var(--color-primary);
 }
 
-/* section 2 styles */
-#section-2 {
+/* postagens styles */
+main.page-main .postagens {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
 }
-#section-2 h2 {
+main.page-main .postagens header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+main.page-main .postagens header h2 {
   font-weight: 700;
   font-size: 24px;
   line-height: 100%;
-
   letter-spacing: -0.02em;
-
   color: var(--color-primary);
 }
-#section-2 p {
+main.page-main .postagens header p {
   font-weight: 400;
   font-size: 17px;
   line-height: 25px;
-
   color: var(--color-secondary);
+}
+main.page-main .postagens article {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+}
+main.page-main .postagens article img {
+  width: 100%;
+}
+main.page-main .postagens article section {
+  margin-bottom: 8px;
+}
+main.page-main .postagens article section h3 {
+  text-align: center;
+  margin-bottom: 10px;
+
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 100%;
+  letter-spacing: -0.02em;
+  color: var(--color-secondary);
+}
+main.page-main .postagens article section p {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 25px;
+  color: var(--color-secondary);
+}
+main.page-main .postagens article button {
+  width: 100%;
+  padding: 16px 30px;
+
+  background: var(--surface-primary);
+  border: 1px solid var(--color-primary);
+  border-radius: 44.5px;
+
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 18px;
+  color: var(--color-primary);
+
+  cursor: pointer;
 }
