@@ -69,6 +69,8 @@ header.page-header .toogle-mode-container input:checked + label::before {
 
 /* nav styles */
 header.page-header nav {
+  z-index: 999;
+
   position: absolute;
   top: 0;
   left: 0;

@@ -18,7 +18,7 @@ function onToggleMenu(closeMenu = false) {
 
   closeMenu && (checkBox.checked = false);
 
-  if (checkBox.checked == false) {
+  if (checkBox.checked) {
     document.getElementById("page-main").classList.add("hide");
   } else {
     document.getElementById("page-main").classList.remove("hide");
