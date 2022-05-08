@@ -5,6 +5,7 @@
   --color-secondary-hover: rgba(32, 32, 32, 0.6);
   --surface-primary: #ffffff;
   --surface-secondary: #f8f9fa;
+  --color-shadow: rgba(0, 0, 0, 0.15);
 }
 
 :root.dark {
@@ -14,6 +15,7 @@
   --color-secondary-hover: rgba(250, 244, 230, 0.6);
   --surface-primary: #222222;
   --surface-secondary: #3c3b3a;
+  --color-shadow: rgba(65, 65, 65, 0.85);
 }
 
 /* Page Reset Styles */

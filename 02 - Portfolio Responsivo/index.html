@@ -21,10 +21,12 @@
   </head>
   <body>
     <header class="page-header">
-      <h1><a onclick="closeMenu()" href="#section-1">Djair Maykon</a></h1>
+      <h1>
+        <a onclick="onToggleMenu(true)" href="#section-1">Djair Maykon</a>
+      </h1>
       <input type="checkbox" id="toogle-menu-checkbox" />
       <div class="toogle-menu-container">
-        <label for="toogle-menu-checkbox">
+        <label for="toogle-menu-checkbox" onclick="onToggleMenu()">
           <div class="toogle-menu-lines"></div>
           <div class="toogle-menu-lines"></div>
           <div class="toogle-menu-lines"></div>
@@ -97,7 +99,7 @@
         <label for="toogle-mode-button"></label>
       </div>
     </header>
-    <main class="page-main">
+    <main id="page-main">
       <section id="section-1">
         <header>
           <img src="./assets/profilePhoto.jpeg" alt="" />

@@ -1,43 +1,43 @@
 /* postagens styles */
-main.page-main .postagens {
+#page-main .postagens {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
 }
-main.page-main .postagens header {
+#page-main .postagens header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
 }
-main.page-main .postagens header h2 {
+#page-main .postagens header h2 {
   font-weight: 700;
   font-size: 24px;
   line-height: 100%;
   letter-spacing: -0.02em;
   color: var(--color-primary);
 }
-main.page-main .postagens header p {
+#page-main .postagens header p {
   font-weight: 400;
   font-size: 17px;
   line-height: 25px;
   text-align: justify;
   color: var(--color-secondary);
 }
-main.page-main .postagens article {
+#page-main .postagens article {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 17px;
 }
-main.page-main .postagens article img {
+#page-main .postagens article img {
   width: 100%;
 }
-main.page-main .postagens article section {
+#page-main .postagens article section {
   margin-bottom: 8px;
 }
-main.page-main .postagens article section h3 {
+#page-main .postagens article section h3 {
   text-align: center;
   margin-bottom: 10px;
 
@@ -47,14 +47,14 @@ main.page-main .postagens article section h3 {
   letter-spacing: -0.02em;
   color: var(--color-secondary);
 }
-main.page-main .postagens article section p {
+#page-main .postagens article section p {
   font-weight: 400;
   font-size: 17px;
   line-height: 25px;
   text-align: justify;
   color: var(--color-secondary);
 }
-main.page-main .postagens article button {
+#page-main .postagens article button {
   width: 100%;
   padding: 16px 30px;
 
@@ -69,7 +69,7 @@ main.page-main .postagens article button {
 
   cursor: pointer;
 }
-main.page-main .postagens article button:hover {
+#page-main .postagens article button:hover {
   background: var(--surface-secondary);
   color: var(--color-primary-hover);
 }

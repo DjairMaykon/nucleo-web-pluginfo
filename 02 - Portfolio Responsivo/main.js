@@ -13,7 +13,15 @@ function onToggleTheme(onDarkTheme = false) {
   }
 }
 
-function closeMenu() {
+function onToggleMenu(closeMenu = false) {
   var checkBox = document.getElementById("toogle-menu-checkbox");
-  checkBox.checked = false;
+
+  console.log(checkBox.checked);
+  closeMenu && (checkBox.checked = false);
+
+  if (checkBox.checked == false) {
+    document.getElementById("page-main").classList.add("hide");
+  } else {
+    document.getElementById("page-main").classList.remove("hide");
+  }
 }
