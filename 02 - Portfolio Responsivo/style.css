@@ -107,6 +107,7 @@ header.page-header nav {
   left: -100%;
   width: 100%;
   height: 100vh;
+  background-color: var(--surface-primary);
 
   transition: all 0.5s ease-in-out;
 
@@ -212,4 +213,86 @@ header.page-header
 }
 header.page-header #toogle-menu-checkbox:checked ~ nav {
   left: 0;
+}
+
+/* main styles */
+main.page-main {
+  margin: 80px 40px 0;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* section 1 styles */
+#section-1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 50px;
+}
+#section-1 header {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  align-items: center;
+}
+#section-1 header img {
+  box-shadow: 0px 25px 65px rgba(0, 0, 0, 0.15);
+  border-radius: 93px;
+}
+#section-1 header h1 {
+  font-family: "EB Garamond";
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 100%;
+
+  text-align: center;
+  letter-spacing: -0.02em;
+
+  color: var(--color-primary);
+}
+#section-1 header hr {
+  width: 192px;
+  height: 1px;
+  background-color: var(--color-primary);
+}
+#section-1 p {
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 25px;
+
+  color: var(--color-secondary);
+}
+#section-1 main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+#section-1 .callout-container {
+  padding: 20px;
+  width: 283px;
+  height: 72px;
+
+  background: var(--surface-secondary);
+  border-radius: 10px;
+
+  display: flex;
+  gap: 10px;
+}
+#section-1 .callout-container path {
+  fill: var(--color-primary);
+}
+#section-1 .callout-container span {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+
+  color: var(--color-secondary);
+}
+#section-1 hr {
+  width: 100%;
+  height: 1px;
+  background-color: var(--color-primary);
 }
