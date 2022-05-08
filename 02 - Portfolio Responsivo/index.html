@@ -20,32 +20,28 @@
     <link rel="stylesheet" href="css/posts-section.css" />
   </head>
   <body>
+    <input type="checkbox" id="toogle-menu-checkbox" />
+    <div id="toogle-menu-container">
+      <label for="toogle-menu-checkbox">
+        <div class="toogle-menu-lines"></div>
+        <div class="toogle-menu-lines"></div>
+        <div class="toogle-menu-lines"></div>
+      </label>
+    </div>
     <header class="page-header">
       <h1>
-        <a onclick="onToggleMenu(true)" href="#section-1">Djair Maykon</a>
+        <a onclick="closeMenu()" href="#section-1">Djair Maykon</a>
       </h1>
-      <input
-        type="checkbox"
-        id="toogle-menu-checkbox"
-        onchange="onToggleMenu()"
-      />
-      <div class="toogle-menu-container">
-        <label for="toogle-menu-checkbox">
-          <div class="toogle-menu-lines"></div>
-          <div class="toogle-menu-lines"></div>
-          <div class="toogle-menu-lines"></div>
-        </label>
-      </div>
       <nav>
         <ul class="links">
           <li>
-            <a onclick="onToggleMenu(true)" href="#section-2">Section two</a>
+            <a onclick="closeMenu()" href="#section-2">Section two</a>
           </li>
           <li>
-            <a onclick="onToggleMenu(true)" href="#section-3">Section three</a>
+            <a onclick="closeMenu()" href="#section-3">Section three</a>
           </li>
           <li>
-            <a onclick="onToggleMenu(true)" href="#section-4">Section four</a>
+            <a onclick="closeMenu()" href="#section-4">Section four</a>
           </li>
         </ul>
         <ul class="social">

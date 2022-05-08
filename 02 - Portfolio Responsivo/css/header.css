@@ -87,9 +87,6 @@ header.page-header nav {
   flex-direction: column;
   gap: 27px;
 }
-header.page-header #toogle-menu-checkbox:checked ~ nav {
-  transform: rotate3d(0, 1, 0, 0);
-}
 header.page-header nav ul {
   list-style: none;
 
@@ -124,10 +121,10 @@ header.page-header nav ul.social li:hover path {
 }
 
 /* toggle menu button */
-header.page-header #toogle-menu-checkbox {
+#toogle-menu-checkbox {
   display: none;
 }
-header.page-header .toogle-menu-container {
+#toogle-menu-container {
   z-index: 999;
   position: absolute;
   top: 97px;
@@ -138,7 +135,7 @@ header.page-header .toogle-menu-container {
   display: flex;
   align-items: center;
 }
-header.page-header .toogle-menu-container label {
+#toogle-menu-container label {
   display: flex;
   flex-direction: column;
   cursor: pointer;
@@ -148,60 +145,63 @@ header.page-header .toogle-menu-container label {
   width: 30px;
   height: 30px;
 }
-header.page-header .toogle-menu-container label .toogle-menu-lines {
+#toogle-menu-container label .toogle-menu-lines {
   background-color: var(--color-primary);
   height: 5px;
   width: 30px;
   transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1);
 }
-header.page-header .toogle-menu-container label:hover .toogle-menu-lines {
+#toogle-menu-container label:hover .toogle-menu-lines {
   background-color: var(--color-primary-hover);
 }
-header.page-header .toogle-menu-container label .toogle-menu-lines:first-child {
+#toogle-menu-container label .toogle-menu-lines:first-child {
   transform-origin: top left;
   transition: transform 0.6s ease-in-out;
 }
-header.page-header
-  .toogle-menu-container
-  label
-  .toogle-menu-lines:nth-child(2) {
+#toogle-menu-container label .toogle-menu-lines:nth-child(2) {
   transition: transform 0.4s ease-in-out;
 }
-header.page-header .toogle-menu-container label .toogle-menu-lines:last-child {
+#toogle-menu-container label .toogle-menu-lines:last-child {
   transform-origin: left bottom;
   transition: transform 0.6s ease-in-out;
 }
-header.page-header
-  #toogle-menu-checkbox:checked
-  ~ .toogle-menu-container
+#toogle-menu-checkbox:checked
+  ~ #toogle-menu-container
   label
   .toogle-menu-lines:first-child {
   margin-top: 0px;
   transform: rotate(45deg);
 }
-header.page-header
-  #toogle-menu-checkbox:checked
-  ~ .toogle-menu-container
+#toogle-menu-checkbox:checked
+  ~ #toogle-menu-container
   label
   .toogle-menu-lines:nth-child(2) {
   transform: scaleY(0);
 }
-header.page-header
-  #toogle-menu-checkbox:checked
-  ~ .toogle-menu-container
+#toogle-menu-checkbox:checked
+  ~ #toogle-menu-container
   label
   .toogle-menu-lines:last-child {
   margin-top: 0px;
   transform: rotate(-45deg);
 }
+#toogle-menu-checkbox:checked ~ header.page-header nav {
+  transform: rotate3d(0, 1, 0, 0);
+}
+#toogle-menu-checkbox:checked ~ header.page-header nav {
+  transform: rotate3d(0, 1, 0, 0);
+}
 
+#toogle-menu-checkbox:checked ~ #page-main {
+  opacity: 0;
+}
 @media screen and (min-width: 1000px) {
   header.page-header {
     padding: 30px 80px;
     gap: 50px;
   }
 
-  header.page-header .toogle-menu-container {
+  #toogle-menu-container {
     display: none;
   }
 

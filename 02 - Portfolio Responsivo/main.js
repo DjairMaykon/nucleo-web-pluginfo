@@ -13,14 +13,7 @@ function onToggleTheme(onDarkTheme = false) {
   }
 }
 
-function onToggleMenu(closeMenu = false) {
+function closeMenu() {
   var checkBox = document.getElementById("toogle-menu-checkbox");
-
-  closeMenu && (checkBox.checked = false);
-
-  if (checkBox.checked) {
-    document.getElementById("page-main").classList.add("hide");
-  } else {
-    document.getElementById("page-main").classList.remove("hide");
-  }
+  checkBox.checked = false;
 }
