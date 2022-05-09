@@ -26,6 +26,8 @@
   text-decoration: none;
   box-sizing: border-box;
   color: inherit;
+
+  transition: background-color 0.2s ease-in-out;
 }
 
 /* Page base styles */

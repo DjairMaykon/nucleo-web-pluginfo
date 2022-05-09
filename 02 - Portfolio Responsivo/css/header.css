@@ -42,7 +42,7 @@ header.page-header .toogle-mode-container label {
 
   cursor: pointer;
 
-  transition: all 0.2s ease;
+  transition: all 0.2s ease-in-out;
 }
 header.page-header .toogle-mode-container label::before {
   content: "";
