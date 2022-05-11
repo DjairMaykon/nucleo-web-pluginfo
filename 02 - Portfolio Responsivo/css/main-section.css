@@ -97,7 +97,7 @@
   background-color: var(--color-primary);
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
   #page-main {
     gap: 40px;
     width: 960px;
@@ -121,4 +121,7 @@
   #section-1 main {
     gap: 46px;
   }
+}
+
+@media screen and (min-width: 768px) {
 }

@@ -193,7 +193,7 @@ header.page-header nav ul.social li:hover path {
   opacity: 0;
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
   header.page-header {
     padding: 30px 80px;
     gap: 50px;
@@ -229,4 +229,7 @@ header.page-header nav ul.social li:hover path {
   #toogle-menu-checkbox:checked ~ #page-main {
     opacity: 100%;
   }
+}
+
+@media screen and (min-width: 768x) {
 }

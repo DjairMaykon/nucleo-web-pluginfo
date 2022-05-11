@@ -76,7 +76,7 @@
   color: var(--color-primary-hover);
 }
 
-@media screen and (min-width: 1000px) {
+@media screen and (min-width: 1024px) {
   #page-main .postagens {
     gap: 36px;
   }
@@ -102,4 +102,7 @@
   #page-main .postagens article button {
     width: fit-content;
   }
+}
+
+@media screen and (min-width: 768x) {
 }
