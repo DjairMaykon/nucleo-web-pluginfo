@@ -1,48 +1,48 @@
 /* postagens styles */
-#page-main .postagens {
+#section-posts {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
 }
-#page-main .postagens header {
+#section-posts header {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 25px;
 }
-#page-main .postagens header h2 {
+#section-posts header h2 {
   font-weight: 700;
   font-size: 2.4rem;
   line-height: 100%;
   letter-spacing: -0.02em;
   color: var(--color-primary);
 }
-#page-main .postagens header p {
+#section-posts header p {
   font-weight: 400;
   font-size: 1.7rem;
   line-height: 2.5rem;
   text-align: justify;
   color: var(--color-secondary);
 }
-#page-main .postagens article {
+#section-posts article {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 17px;
 }
-#page-main .postagens article img {
+#section-posts article img {
   width: 100%;
   max-width: 640px;
   max-height: 370px;
 }
-#page-main .postagens article section {
+#section-posts article section {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-bottom: 8px;
 }
-#page-main .postagens article section h3 {
+#section-posts article section h3 {
   margin-bottom: 10px;
 
   font-weight: 700;
@@ -51,7 +51,7 @@
   letter-spacing: -0.02em;
   color: var(--color-secondary);
 }
-#page-main .postagens article section p {
+#section-posts article section p {
   font-weight: 400;
   font-size: 1.7rem;
   line-height: 2.5rem;
@@ -60,7 +60,7 @@
 
   margin-bottom: 25px;
 }
-#page-main .postagens article section button {
+#section-posts article section button {
   max-width: 310px;
   width: 100%;
   padding: 16px 30px;
@@ -76,36 +76,36 @@
 
   cursor: pointer;
 }
-#page-main .postagens article section button:hover {
+#section-posts article section button:hover {
   background: var(--surface-secondary);
   color: var(--color-primary-hover);
 }
 
 @media screen and (min-width: 425px) {
-  #page-main .postagens article section {
+  #section-posts article section {
     align-items: flex-start;
   }
 }
 
-@media screen and (min-width: 610px) {
-  #page-main .postagens {
+@media screen and (min-width: 790px) {
+  #section-posts {
     gap: 36px;
   }
-  #page-main .postagens header {
+  #section-posts header {
     align-items: flex-start;
   }
-  #page-main .postagens article {
+  #section-posts article {
     flex-direction: row;
     align-items: flex-start;
     gap: 40px;
   }
-  #page-main .postagens article img {
+  #section-posts article img {
     width: 44.44vw;
   }
-  #page-main .postagens article:nth-child(odd) img {
+  #section-posts article:nth-child(odd) img {
     order: 2;
   }
-  #page-main .postagens article section button {
+  #section-posts article section button {
     width: fit-content;
   }
 }

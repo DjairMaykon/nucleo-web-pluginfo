@@ -68,14 +68,12 @@ header.page-header .toogle-mode-container input:checked + label::before {
 
 /* nav styles */
 header.page-header nav {
+  z-index: 998;
+
   flex: 1;
   display: flex;
-}
-header.page-header nav ul {
-  list-style: none;
-
-  display: flex;
-  align-items: center;
+  flex-direction: column;
+  gap: 27px;
 
   position: absolute;
   transform-origin: top left;
@@ -85,14 +83,21 @@ header.page-header nav ul {
   width: 100%;
   height: 100vh;
 
+  margin-top: 127px;
+
   transition: all 0.5s ease-in-out;
+}
+header.page-header nav ul {
+  list-style: none;
+
+  display: flex;
+  align-items: center;
 }
 header.page-header nav ul.links {
   display: flex;
   flex-direction: column;
   gap: 25px;
   padding: 25px 0;
-  margin-top: 127px;
 }
 header.page-header nav ul.links li {
   font-weight: 400;
@@ -100,7 +105,20 @@ header.page-header nav ul.links li {
   line-height: 2rem;
   color: var(--color-primary);
 }
+header.page-header nav ul.links li ul.dropdown-menu {
+  position: relative;
+  transform: none;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  top: 0;
+  left: 0;
+  scale: 0;
+  transition: all 0.2s ease;
+  display: none;
+}
 header.page-header nav ul.social {
+  z-index: 997;
   display: flex;
   gap: 100px;
   justify-content: center;
@@ -179,23 +197,26 @@ header.page-header nav ul li:hover {
   margin-top: 0px;
   transform: rotate(-45deg);
 }
-#toogle-menu-checkbox:checked ~ header.page-header ul {
+#toogle-menu-checkbox:checked ~ header.page-header nav {
   top: 0;
   left: 0;
   transform: rotate3d(0, 1, 0, 0);
+}
+header.page-header nav ul li:hover > ul.dropdown-menu {
+  scale: 1;
+  display: flex;
+  gap: 25px;
+  margin-top: 10px;
 }
 #toogle-menu-checkbox:checked ~ #page-main {
   opacity: 0;
 }
 
-@media screen and (min-width: 610px) {
+@media screen and (min-width: 790px) {
   header.page-header {
     gap: 25px;
   }
   header.page-header nav {
-    justify-content: end;
-  }
-  header.page-header nav ul.social {
     position: inherit;
     top: auto;
     left: auto;
@@ -204,6 +225,30 @@ header.page-header nav ul li:hover {
     margin: 0;
     transform: none;
 
+    flex-direction: row;
+    gap: 20px;
+    padding: 0;
+    justify-content: end;
+  }
+  header.page-header nav ul.links {
+    position: absolute;
+    transform-origin: top left;
+    transform: rotate3d(0, 1, 0, -180deg);
+    top: -25px;
+    left: -170px;
+    width: 100%;
+    height: 100vh;
+
+    margin-top: 127px;
+
+    transition: all 0.5s ease-in-out;
+  }
+  #toogle-menu-checkbox:checked ~ header.page-header nav ul.links {
+    top: 0;
+    left: 0;
+    transform: rotate3d(0, 1, 0, 0);
+  }
+  header.page-header nav ul.social {
     gap: 30px;
   }
   #toogle-menu-checkbox:checked ~ header.page-header ul.social {
