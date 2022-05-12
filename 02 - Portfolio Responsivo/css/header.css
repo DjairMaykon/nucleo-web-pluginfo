@@ -105,13 +105,14 @@ header.page-header nav ul.social {
   gap: 100px;
   justify-content: center;
 }
-header.page-header nav ul.social li path {
-  fill: var(--color-primary);
+header.page-header nav ul.social li {
+  font-weight: 700;
+  font-size: 2.2rem;
+  line-height: 2rem;
+  color: var(--color-primary);
 }
-header.page-header nav ul.links li:hover,
-header.page-header nav ul.social li:hover path {
+header.page-header nav ul li:hover {
   color: var(--color-primary-hover);
-  fill: var(--color-primary-hover);
 }
 
 /* toggle menu button */
