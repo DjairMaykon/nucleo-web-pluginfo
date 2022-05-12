@@ -1,7 +1,9 @@
 /* main styles */
 #page-main {
+  width: 82.66vw;
   max-width: 960px;
-  margin: 80px 40px 25px;
+  min-width: 310px;
+  margin: 80px auto 25px;
 
   display: flex;
   flex-direction: column;
@@ -101,11 +103,10 @@
   color: var(--color-primary-hover);
 }
 
-@media screen and (min-width: 1024px) {
-  #page-main {
-    gap: 40px;
-    margin: 50px auto 25px;
-    justify-content: center;
+@media screen and (min-width: 610px) {
+  #section-1 header {
+    align-items: start;
+    align-self: start;
   }
 
   #section-1 header {
@@ -113,13 +114,23 @@
     align-self: start;
   }
   #section-1 header h1 {
-    font-size: 7rem;
+    font-size: 4rem;
 
     text-align: justify;
   }
-  #section-1 header hr,
-  #section-1 hr {
-    margin: 40px 0;
+}
+
+@media screen and (min-width: 960px) {
+  #page-main {
+    width: 66.66vw;
+  }
+  #page-main {
+    gap: 40px;
+    margin: 50px auto 25px;
+    justify-content: center;
+  }
+  #section-1 header h1 {
+    font-size: 7rem;
   }
   #section-1 main {
     gap: 46px;
