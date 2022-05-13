@@ -37,13 +37,7 @@
   flex-direction: column;
   gap: 2.5rem;
 }
-#section-introduction main #introduction-text p strong {
-  color: var(--color-primary);
-  font-weight: 400;
-}
-:root.dark #section-introduction #introduction-text p strong {
-  text-decoration: underline;
-}
+
 #section-introduction main .callout-container {
   align-self: flex-start;
   padding: 20px;
@@ -61,13 +55,6 @@
   line-height: 1.6rem;
 
   color: var(--color-secondary);
-}
-#section-introduction main .callout-container span strong {
-  color: var(--color-primary);
-  font-weight: 400;
-}
-#section-introduction main .callout-container span strong a:hover {
-  color: var(--color-primary-hover);
 }
 
 @media screen and (min-width: 790px) {

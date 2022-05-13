@@ -85,6 +85,18 @@ button:hover {
   color: var(--color-primary-hover);
 }
 
+body main a {
+  color: var(--color-primary);
+  font-weight: 400;
+  cursor: pointer;
+}
+:root.dark body main a {
+  text-decoration: underline;
+}
+body main a:hover {
+  color: var(--color-primary-hover);
+}
+
 body {
   background-color: var(--surface-primary);
 }
