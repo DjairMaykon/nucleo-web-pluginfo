@@ -1,0 +1,44 @@
+#section-contact main {
+  width: 100%;
+}
+
+#section-contact main form,
+#section-contact main form .form-item {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+
+  align-self: flex-start;
+}
+
+#section-contact main form .form-item {
+  gap: 5px;
+}
+
+#section-contact main form #button-submit-contact {
+  align-self: flex-end;
+
+  padding: 10px 30px;
+  width: fit-content;
+}
+
+@media screen and (min-width: 790px) {
+  #section-contact main {
+    flex-direction: row;
+  }
+  #section-contact main form .form-item {
+    flex-direction: row;
+    gap: 10px;
+  }
+  #section-contact main form .form-item label {
+    width: 100px;
+  }
+  #section-contact main form .form-item input,
+  #section-contact main form .form-item textarea {
+    width: fit-content;
+    flex: 1;
+  }
+}

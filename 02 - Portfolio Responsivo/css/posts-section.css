@@ -1,30 +1,4 @@
 /* postagens styles */
-#section-posts {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-}
-#section-posts header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
-}
-#section-posts header h2 {
-  font-weight: 700;
-  font-size: 2.4rem;
-  line-height: 100%;
-  letter-spacing: -0.02em;
-  color: var(--color-primary);
-}
-#section-posts header p {
-  font-weight: 400;
-  font-size: 1.7rem;
-  line-height: 2.5rem;
-  text-align: justify;
-  color: var(--color-secondary);
-}
 #section-posts article {
   display: flex;
   flex-direction: column;
@@ -36,49 +10,12 @@
   max-width: 640px;
   max-height: 370px;
 }
-#section-posts article section {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 8px;
-}
 #section-posts article section h3 {
-  margin-bottom: 10px;
-
   font-weight: 700;
   font-size: 2rem;
   line-height: 100%;
   letter-spacing: -0.02em;
   color: var(--color-secondary);
-}
-#section-posts article section p {
-  font-weight: 400;
-  font-size: 1.7rem;
-  line-height: 2.5rem;
-  text-align: justify;
-  color: var(--color-secondary);
-
-  margin-bottom: 25px;
-}
-#section-posts article section button {
-  max-width: 310px;
-  width: 100%;
-  padding: 16px 30px;
-
-  background: var(--surface-primary);
-  border: 1px solid var(--color-primary);
-  border-radius: 44.5px;
-
-  font-weight: 700;
-  font-size: 1.2rem;
-  line-height: 1.8rem;
-  color: var(--color-primary);
-
-  cursor: pointer;
-}
-#section-posts article section button:hover {
-  background: var(--surface-secondary);
-  color: var(--color-primary-hover);
 }
 
 @media screen and (min-width: 425px) {
@@ -91,9 +28,6 @@
   #section-posts {
     gap: 36px;
   }
-  #section-posts header {
-    align-items: flex-start;
-  }
   #section-posts article {
     flex-direction: row;
     align-items: flex-start;
@@ -104,8 +38,5 @@
   }
   #section-posts article:nth-child(odd) img {
     order: 2;
-  }
-  #section-posts article section button {
-    width: fit-content;
   }
 }

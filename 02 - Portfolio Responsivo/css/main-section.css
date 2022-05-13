@@ -1,13 +1,7 @@
 /* main styles */
 #page-main {
   width: 82.66vw;
-  max-width: 960px;
-  min-width: 310px;
   margin: 80px auto 25px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
 
   opacity: 100%;
   transition: opacity 0.5s ease-in-out;
@@ -15,16 +9,10 @@
 
 /* introduction section styles */
 #section-introduction {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 40px;
 }
 #section-introduction header {
-  display: flex;
-  flex-direction: column;
   gap: 40px;
-  align-items: center;
 }
 #section-introduction header img {
   box-shadow: 0px 25px 65px var(--color-shadow);
@@ -41,31 +29,13 @@
 
   color: var(--color-primary);
 }
-#section-introduction hr {
-  width: 100%;
-  height: 1px;
-  background-color: var(--color-primary);
-}
 #section-introduction header hr {
   width: 192px;
-}
-#section-introduction main {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 25px;
 }
 #section-introduction main #introduction-text {
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-}
-#section-introduction main #introduction-text p {
-  font-weight: 400;
-  font-size: 1.7rem;
-  line-height: 2.5rem;
-  text-align: justify;
-  color: var(--color-secondary);
 }
 #section-introduction main #introduction-text p strong {
   color: var(--color-primary);
@@ -85,10 +55,7 @@
   display: flex;
   gap: 10px;
 }
-#section-introduction main .callout-container path {
-  fill: var(--color-primary);
-}
-#section-introduction main .callout-container span {
+#section-introduction main .callout-container {
   font-weight: 400;
   font-size: 1.2rem;
   line-height: 1.6rem;
@@ -104,28 +71,15 @@
 }
 
 @media screen and (min-width: 790px) {
-  #section-introduction header {
-    align-items: start;
-    align-self: start;
-  }
-
-  #section-introduction header {
-    align-items: start;
-    align-self: start;
-  }
   #section-introduction header h1 {
     font-size: 4rem;
-
     text-align: justify;
   }
 }
 
 @media screen and (min-width: 960px) {
   #page-main {
-    width: 66.66vw;
-  }
-  #page-main {
-    gap: 40px;
+    gap: 80px;
     margin: 50px auto 25px;
     justify-content: center;
   }
