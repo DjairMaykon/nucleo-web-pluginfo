@@ -202,13 +202,13 @@ header.page-header nav ul li:hover {
   left: 0;
   transform: rotate3d(0, 1, 0, 0);
 }
-header.page-header nav ul li:hover > ul.dropdown-menu,
+/* header.page-header nav ul li:hover > ul.dropdown-menu,
 header.page-header nav ul li ul.dropdown-menu:hover {
   scale: 1;
   display: flex;
   gap: 25px;
   margin-top: 10px;
-}
+} */
 #toogle-menu-checkbox:checked ~ #page-main {
   opacity: 0;
 }
@@ -285,7 +285,7 @@ header.page-header nav ul li ul.dropdown-menu:hover {
     gap: 20px;
     padding: 0;
   }
-  header.page-header nav ul.links li ul.dropdown-menu {
+  /* header.page-header nav ul.links li ul.dropdown-menu {
     z-index: 999;
     position: absolute;
     top: 50px;
@@ -293,7 +293,7 @@ header.page-header nav ul li ul.dropdown-menu:hover {
     gap: 5px;
 
     margin-top: 0;
-  }
+  } */
 
   #toogle-menu-checkbox:checked ~ #page-main {
     opacity: 100%;
