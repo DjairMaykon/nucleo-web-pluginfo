@@ -45,6 +45,8 @@ hr {
 
 p,
 label,
+main section form input,
+main section form textarea,
 main section form input::placeholder,
 main section form textarea::placeholder {
   font-weight: 400;

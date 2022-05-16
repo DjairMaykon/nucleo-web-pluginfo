@@ -191,14 +191,21 @@
           <h2>Entre em contato</h2>
         </header>
         <main>
-          <form>
+          <form id="contact-form" action="sendForm();">
+            <input type="hidden" name="contact-number" />
             <div class="form-item">
               <label for="input-name">Nome</label>
-              <input type="text" id="input-name" placeholder="Seu nome aqui" />
+              <input
+                name="name"
+                type="text"
+                id="input-name"
+                placeholder="Seu nome aqui"
+              />
             </div>
             <div class="form-item">
               <label for="input-email">Email</label>
               <input
+                name="email"
                 type="email"
                 id="input-email"
                 placeholder="example@example.com"
@@ -207,6 +214,7 @@
             <div class="form-item">
               <label for="input-message">Mensagem</label>
               <textarea
+                name="message"
                 id="input-message"
                 cols="30"
                 rows="10"
@@ -221,6 +229,10 @@
     <script
       src="https://kit.fontawesome.com/d9ec39f629.js"
       crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"
     ></script>
     <script src="main.js"></script>
   </body>
