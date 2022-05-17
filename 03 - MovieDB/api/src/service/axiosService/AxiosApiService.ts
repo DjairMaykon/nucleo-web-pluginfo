@@ -36,9 +36,10 @@ export class AxiosApiService implements ApiService {
               backdropPath: (process.env.TMDB_IMAGE_URL + '/w1280' + element.backdrop_path) as string,
               posterPath: (process.env.TMDB_IMAGE_URL + '/w500' + element.poster_path) as string,
             },
+            title: element.title as string,
             originalTitle: element.original_title as string,
             overview: element.overview as string,
-            popularity: element.popularity as number,
+            voteAverage: element.vote_average as number,
             releaseDate: element.release_date as string,
           });
         });

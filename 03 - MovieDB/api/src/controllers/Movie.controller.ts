@@ -23,9 +23,10 @@ export type getMoviesParams = {
 
 export type Movie = {
   id: number;
+  title: string;
   originalTitle: string;
   overview: string;
-  popularity: number;
+  voteAverage: number;
   imagesPath: {
     backdropPath: string;
     posterPath: string;
