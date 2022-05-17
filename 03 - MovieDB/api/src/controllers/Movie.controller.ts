@@ -1,4 +1,5 @@
 import { ApiService } from '@service/ApiService';
+import { NextFunction, Request, Response } from 'express';
 
 export type getMoviesParams = {
   language?: 'en-US' | 'pt-BR';
@@ -37,7 +38,17 @@ export class MovieController {
   constructor(private apiService: ApiService) {
     this.apiService = apiService;
   }
-  async list(params?: getMoviesParams) {
-    return await this.apiService.getMovies(params);
+
+  async list(req: Request<unknown, unknown, unknown, getMoviesParams>, res: Response, next: NextFunction) {
+    try {
+      const result = await this.apiService.getMovies({
+        language: req.query.language,
+        page: req.query.page,
+        sort_by: req.query.sort_by,
+      });
+      return res.status(200).json(result);
+    } catch (err) {
+      next(err);
+    }
   }
 }

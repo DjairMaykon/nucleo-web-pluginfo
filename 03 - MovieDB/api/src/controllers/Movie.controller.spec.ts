@@ -1,4 +1,5 @@
-import { MovieController } from './Movie.controller';
+import { Request, Response } from 'express';
+import { getMoviesParams, MovieController } from './Movie.controller';
 
 const apiServiceGetMoviesSpy = jest.fn();
 
@@ -10,8 +11,16 @@ describe('Movie Controller', () => {
       getMovies: apiServiceGetMoviesSpy,
     });
 
-    await movieController.list();
+    const req = {
+      query: {} as getMoviesParams,
+    } as Request;
+    const next = jest.fn;
+    await movieController.list(req, {} as Response, next);
 
-    expect(apiServiceGetMoviesSpy).toBeCalledWith(undefined);
+    expect(apiServiceGetMoviesSpy).toBeCalledWith({
+      language: req.query.language,
+      page: req.query.page,
+      sort_by: req.query.sort_by,
+    });
   });
 });

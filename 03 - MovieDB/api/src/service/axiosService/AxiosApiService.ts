@@ -11,8 +11,8 @@ export class AxiosApiService implements ApiService {
     this.apiKey = apiKey;
   }
 
-  private getAxiosClient() {
-    return axios.create({
+  private async getAxiosClient() {
+    return await axios.create({
       baseURL: this.url,
       params: {
         api_key: this.apiKey,
@@ -23,7 +23,7 @@ export class AxiosApiService implements ApiService {
   async getMovies(params?: getMoviesParams): Promise<Movie[]> {
     const movies: Movie[] = [];
 
-    const axios = this.getAxiosClient();
+    const axios = await this.getAxiosClient();
 
     await axios
       .get('discover/movie/', { params })
