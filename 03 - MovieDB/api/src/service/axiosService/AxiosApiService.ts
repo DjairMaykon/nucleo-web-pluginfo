@@ -33,8 +33,8 @@ export class AxiosApiService implements ApiService {
             genres: element.genre_ids as number[],
             id: element.id as number,
             imagesPath: {
-              backdropPath: element.backdrop_path as string,
-              posterPath: element.poster_path as string,
+              backdropPath: (process.env.TMDB_IMAGE_URL + '/w1280' + element.backdrop_path) as string,
+              posterPath: (process.env.TMDB_IMAGE_URL + '/w500' + element.poster_path) as string,
             },
             originalTitle: element.original_title as string,
             overview: element.overview as string,

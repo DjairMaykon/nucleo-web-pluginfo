@@ -42,8 +42,8 @@ describe('AxiosApiService', () => {
         genres: [1, 2, 3],
         id: 1,
         imagesPath: {
-          backdropPath: 'img.jpg',
-          posterPath: 'img.jpg',
+          backdropPath: process.env.TMDB_IMAGE_URL + '/w1280' + 'img.jpg',
+          posterPath: process.env.TMDB_IMAGE_URL + '/w500' + 'img.jpg',
         },
         originalTitle: 'title',
         overview: 'overview',
@@ -54,8 +54,8 @@ describe('AxiosApiService', () => {
         genres: [4, 5],
         id: 2,
         imagesPath: {
-          backdropPath: 'img2.jpg',
-          posterPath: 'img2.jpg',
+          backdropPath: process.env.TMDB_IMAGE_URL + '/w1280' + 'img2.jpg',
+          posterPath: process.env.TMDB_IMAGE_URL + '/w500' + 'img2.jpg',
         },
         originalTitle: 'title2',
         overview: 'overview2',
