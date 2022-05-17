@@ -3,15 +3,17 @@
   "private": true,
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.1",
     "axios": "^0.27.2",
+    "moment": "^2.29.3",
     "react": "^18.0.0",
-    "react-dom": "^18.0.0"
+    "react-dom": "^18.0.0",
+    "react-ellipsis-text": "^1.2.1"
   },
   "devDependencies": {
     "@honkhonk/vite-plugin-svgr": "^1.1.0",
