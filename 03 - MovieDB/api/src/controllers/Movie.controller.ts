@@ -1,4 +1,3 @@
-import { DefaultError } from '@commons/DefaultError';
 import { ApiService } from '@service/ApiService';
 
 export type getMoviesParams = {
