@@ -6,7 +6,6 @@ type MovieCardProps = {
   movie?: Movie;
 };
 export function MovieCard({ movie }: MovieCardProps) {
-  console.log(movie);
   return (
     <div
       style={{ backgroundImage: `url('${movie?.imagesPath.posterPath}')` }}

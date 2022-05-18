@@ -34,9 +34,18 @@ function App() {
     <>
       <Header />
       <div className="w-fit max-w-6xl mx-auto my-5 flex flex-wrap gap-3 justify-center">
-        {movies.map((movie, index) => {
-          return <MovieCard key={index} movie={movie} />;
-        })}
+        {movies.length > 0
+          ? movies.map((movie, index) => {
+              return <MovieCard key={index} movie={movie} />;
+            })
+          : [...Array(20)].map((e, i) => {
+              return (
+                <div
+                  key={i}
+                  className="rounded-md animate-pulse bg-gray-300 flex w-[225px] h-[337.5px]"
+                ></div>
+              );
+            })}
       </div>
     </>
   );
