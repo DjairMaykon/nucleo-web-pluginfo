@@ -12,8 +12,8 @@ export function MovieCard({ movie }: MovieCardProps) {
       className="group rounded-md ease-in-out duration-300 overflow-hidden flex w-[225px] h-[337.5px] hover:w-[300px] hover:h-[450px] flex-col items-center justify-end bg-cover"
     >
       <div className="flex flex-col gap-1.5 w-full bg-movie-card  px-4 py-4">
-        <div className="flex flex-col gap-1">
-          <h1 className="font-lato font-bold text-lg h-fit text-zinc-200">
+        <div className="flex flex-col gap-3">
+          <h1 className="font-lato font-bold text-lg leading-none h-fit text-zinc-200">
             {movie?.title}
           </h1>
           <div className="flex gap-5">
