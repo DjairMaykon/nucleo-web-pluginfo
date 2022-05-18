@@ -33,7 +33,7 @@ function App() {
   return (
     <>
       <Header />
-      <div className="w-fit max-w-6xl mx-auto my-5 flex flex-wrap gap-3 justify-center">
+      <div className="w-fit mx-auto my-5 flex flex-wrap gap-3 justify-center">
         {movies.length > 0
           ? movies.map((movie, index) => {
               return <MovieCard key={index} movie={movie} />;
