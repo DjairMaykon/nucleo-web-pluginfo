@@ -9,25 +9,31 @@ function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
-    api.get("/movie").then((response) => {
-      setMovies(
-        response.data.map((element: any) => {
-          return {
-            id: element.id,
-            title: element.title,
-            originalTitle: element.originalTitle,
-            overview: element.overview,
-            voteAverage: element.voteAverage,
-            imagesPath: {
-              backdropPath: element.imagesPath.backdropPath,
-              posterPath: element.imagesPath.posterPath,
-            },
-            releaseDate: element.releaseDate,
-            genres: element.genres,
-          };
-        })
-      );
-    });
+    api
+      .get("/movie", {
+        params: {
+          language: "pt-BR",
+        },
+      })
+      .then((response) => {
+        setMovies(
+          response.data.map((element: any) => {
+            return {
+              id: element.id,
+              title: element.title,
+              originalTitle: element.originalTitle,
+              overview: element.overview,
+              voteAverage: element.voteAverage,
+              imagesPath: {
+                backdropPath: element.imagesPath.backdropPath,
+                posterPath: element.imagesPath.posterPath,
+              },
+              releaseDate: element.releaseDate,
+              genres: element.genres,
+            };
+          })
+        );
+      });
   }, []);
 
   return (
