@@ -30,7 +30,7 @@ export function MovieCard({ movie }: MovieCardProps) {
               </span>
             </span>
             <span className="font-lato text-zinc-200 text-xs">
-              {moment("2022-03-30", "YYYY-MM-DD").format(
+              {moment(movie?.releaseDate, "YYYY-MM-DD").format(
                 "DD [de] MMM [de] YYYY"
               )}
             </span>
