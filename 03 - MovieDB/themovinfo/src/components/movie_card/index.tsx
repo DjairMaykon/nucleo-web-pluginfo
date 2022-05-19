@@ -9,7 +9,7 @@ export function MovieCard({ movie }: MovieCardProps) {
   return (
     <div
       style={{ backgroundImage: `url('${movie?.imagesPath.posterPath}')` }}
-      className="group rounded-md ease-in-out duration-300 overflow-hidden flex w-[225px] h-[337.5px] hover:w-[300px] hover:h-[450px] flex-col items-center justify-end bg-cover"
+      className="group rounded-md ease-in-out duration-300 overflow-hidden flex w-[225px] h-[337.5px] hover:scale-150 hover:origin-top hover:z-50 flex-col items-center justify-end bg-cover"
     >
       <div className="flex flex-col gap-1.5 w-full bg-movie-card  px-4 py-4">
         <div className="flex flex-col gap-3">
