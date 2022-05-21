@@ -50,7 +50,6 @@ function App() {
 
   useEffect(() => {
     if (moviesPage <= 501) {
-      console.log(moment().format("YYYY-MM-DD"));
       api
         .get("/movie", {
           params: {
