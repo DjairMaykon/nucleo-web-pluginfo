@@ -11,13 +11,13 @@ function App() {
   const [moviesPage, setMoviesPage] = useState<number>(1);
   const [loadingItens, setLoadingItens] = useState<boolean>(false);
 
-  function onRequestItens() {
-    setLoadingItens(true);
+  useEffect(() => {
     api
       .get("/movie", {
         params: {
           language: "pt-BR",
           page: moviesPage,
+          sort_by: "popularity.desc",
         },
       })
       .then((response) => {
@@ -40,22 +40,19 @@ function App() {
             })
           )
         );
-        setLoadingItens(false);
         setMoviesPage(moviesPage + 1);
       });
-  }
-
+  }, []);
   return (
     <>
       <Header />
-      <Carousel
-        loadingItens={loadingItens}
-        onRequestItens={() => onRequestItens()}
-      >
-        {movies.map((movie, index) => {
-          return <MovieCard key={index} movie={movie} />;
-        })}
-      </Carousel>
+      <main className="w-11/12 mx-auto my-6">
+        <div className="flex flex-wrap gap-10 justify-center w-full">
+          {movies.map((movie, index) => {
+            return <MovieCard key={index} movie={movie} />;
+          })}
+        </div>
+      </main>
     </>
   );
 }
