@@ -11,7 +11,7 @@ import { Movie } from "./util/types";
 const tabs = {
   Popular: "popularity.desc",
   Recente: "release_date.desc",
-  "Bem votados": "vote_count.desc",
+  "Mais votados": "vote_count.desc",
 };
 
 function App() {
@@ -25,7 +25,7 @@ function App() {
   function onSelectTab(tab: string) {
     setMoviesPage(1);
     setMovies([]);
-    setMoviesSort(tabs[tab as "Popular" | "Recente" | "Bem votados"]);
+    setMoviesSort(tabs[tab as "Popular" | "Recente" | "Mais votados"]);
   }
 
   useEffect(() => {
