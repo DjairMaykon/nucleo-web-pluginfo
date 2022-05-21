@@ -7,8 +7,8 @@ export type Movie = {
   overview: string;
   voteAverage: number;
   imagesPath: {
-    backdropPath: string;
-    posterPath: string;
+    backdropPath?: string;
+    posterPath?: string;
   };
   releaseDate: string;
   genres: number[];

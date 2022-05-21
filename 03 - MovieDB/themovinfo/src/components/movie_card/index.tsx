@@ -1,6 +1,7 @@
 import { Movie } from "../../util/types";
 import moment from "moment";
 
+import imageNotFound from "../../assets/image-not-found.jpg";
 import "./style.css";
 
 type MovieCardProps = {
@@ -20,7 +21,11 @@ export function MovieCard({ movie }: MovieCardProps) {
   return (
     <article className="group w-fit flex flex-col gap-3 items-center rounded-md max-w-md bg-gradient-to-b from-slate-800 via-slate-600 to-slate-400 pb-4">
       <figure className="w-9/12 relative -top-2">
-        <img className="rounded-md" src={movie.imagesPath.posterPath} alt="" />
+        <img
+          className="rounded-md"
+          src={movie.imagesPath.posterPath ?? imageNotFound}
+          alt=""
+        />
       </figure>
       <section className="flex flex-col gap-2.5 justify-start w-9/12">
         <header>
