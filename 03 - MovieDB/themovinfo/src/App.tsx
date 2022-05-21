@@ -96,7 +96,7 @@ function App() {
           {hasItensToLoad && (
             <article
               ref={loadMoreRef}
-              className="group w-full h-[35rem] animate-pulse flex flex-col gap-3 items-center rounded-md max-w-md bg-slate-400"
+              className="group w-full h-[35rem] md:h-[353px] animate-pulse flex flex-col gap-3 items-center rounded-md max-w-md bg-slate-400"
             />
           )}
         </div>
