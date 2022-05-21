@@ -25,6 +25,7 @@ function App() {
   const inputRef = useRef(null);
 
   function onSelectTab(tab: string) {
+    setMovieSearch("");
     setMoviesPage(1);
     setMovies([]);
     setMoviesSort(tabs[tab as "Popular" | "Recente" | "Mais votados"]);
@@ -94,9 +95,8 @@ function App() {
     <>
       <Header />
       <main className="flex flex-col gap-10 w-11/12 mx-auto my-6">
-        <div className="flex justify-between">
-          <Tabs tabs={Object.keys(tabs)} onSelectTab={onSelectTab} />
-          <div className="flex items-center border-b-2 w-2/5 text-zinc-200 ">
+        <div className="flex flex-col md:flex-row gap-5 justify-between">
+          <div className="flex items-center md:order-1 border-b-2 w-full p-2 md:w-2/5 text-zinc-200 ">
             <input
               ref={inputRef}
               value={movieSearch ?? ""}
@@ -121,6 +121,7 @@ function App() {
               </svg>
             </button>
           </div>
+          <Tabs tabs={Object.keys(tabs)} onSelectTab={onSelectTab} />
         </div>
         <div className="flex flex-wrap gap-10 justify-center w-full">
           {movies.map((movie, index) => {
