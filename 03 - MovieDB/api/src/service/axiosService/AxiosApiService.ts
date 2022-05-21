@@ -25,8 +25,14 @@ export class AxiosApiService implements ApiService {
 
     const axios = await this.getAxiosClient();
 
+    const rota = params?.query ? '/search/movie/' : 'discover/movie/';
+
+    if (params?.query) {
+      params['release_date.lte'] = undefined;
+    }
+
     await axios
-      .get('discover/movie/', { params })
+      .get(rota, { params })
       .then((response) => {
         response.data.results.forEach((element: any) => {
           movies.push({

@@ -20,6 +20,7 @@ export type getMoviesParams = {
     | 'vote_count.desc';
   page?: number;
   'release_date.lte'?: string;
+  query?: string;
 };
 
 export type Movie = {
@@ -50,6 +51,7 @@ export class MovieController {
         page: req.query.page,
         sort_by: req.query.sort_by,
         'release_date.lte': req.query['release_date.lte'],
+        query: req.query.query,
       });
       return res.status(200).json(result);
     } catch (err) {
