@@ -15,7 +15,7 @@ export function Tabs({ tabs, initialTab, onSelectTab }: TabsProps) {
     onSelectTab(tab);
   }
   return (
-    <div className="flex gap-1 rounded-lg bg-slate-600 w-fit p-2 font-bold">
+    <div className="flex rounded-3xl bg-slate-600 w-fit p-2 font-bold">
       {tabs.map((tab, i) => {
         return (
           <a
@@ -23,7 +23,7 @@ export function Tabs({ tabs, initialTab, onSelectTab }: TabsProps) {
             onClick={() => handleClick(tab)}
             className={`${
               selectedTab == tab && "bg-slate-300"
-            } py-1 px-4 rounded-lg cursor-pointer`}
+            } py-1 px-4 rounded-3xl cursor-pointer`}
           >
             {tab}
           </a>
