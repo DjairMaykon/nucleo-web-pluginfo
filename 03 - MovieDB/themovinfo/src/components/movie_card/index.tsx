@@ -39,7 +39,9 @@ export function MovieCard({ movie }: MovieCardProps) {
       </figure>
       <section className="flex flex-col gap-4 justify-start w-9/12 md:w-11/12">
         <header>
-          <h2 className="text-2xl text-stone-900 font-bold">{movie.title}</h2>
+          <h2 className="text-2xl text-stone-900 font-bold md:w-10/12">
+            {movie.title}
+          </h2>
           <h4 className="text-xs">Titulo original: {movie.originalTitle}</h4>
           <div className="flex gap-1 mt-2">
             <div className="flex gap-1 bg-cyan-700 w-fit p-1.5 text-xs rounded-xl">
