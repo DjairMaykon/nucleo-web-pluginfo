@@ -19,13 +19,21 @@ function App() {
   const [moviesPage, setMoviesPage] = useState<number>(1);
   const [moviesSort, setMoviesSort] = useState<string>(tabs.Popular);
   const [hasItensToLoad, setHasItensToLoad] = useState<boolean>(true);
+  const [movieSearch, setMovieSearch] = useState<string | null>(null);
 
   const loadMoreRef = useRef(null);
+  const inputRef = useRef(null);
 
   function onSelectTab(tab: string) {
     setMoviesPage(1);
     setMovies([]);
     setMoviesSort(tabs[tab as "Popular" | "Recente" | "Mais votados"]);
+  }
+
+  function handleSearch(search: string) {
+    setMoviesPage(1);
+    setMovies([]);
+    setMovieSearch(search);
   }
 
   useEffect(() => {
@@ -49,46 +57,71 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (moviesPage <= 501) {
-      api
-        .get("/movie", {
-          params: {
-            language: "pt-BR",
-            page: moviesPage,
-            sort_by: moviesSort,
-            "release_date.lte": moment().format("YYYY-MM-DD"),
-          },
-        })
-        .then((response) => {
-          setMovies([
-            ...movies,
-            ...response.data.map((element: any) => {
-              return {
-                id: element.id,
-                title: element.title,
-                originalTitle: element.originalTitle,
-                originalLanguage: element.originalLanguage,
-                overview: element.overview,
-                voteAverage: element.voteAverage,
-                imagesPath: {
-                  backdropPath: element.imagesPath.backdropPath,
-                  posterPath: element.imagesPath.posterPath,
-                },
-                releaseDate: element.releaseDate,
-                genres: element.genres,
-              };
-            }),
-          ]);
+    api
+      .get("/movie", {
+        params: {
+          query: movieSearch,
+          language: "pt-BR",
+          page: moviesPage,
+          sort_by: moviesSort,
+          "release_date.lte": moment().format("YYYY-MM-DD"),
+        },
+      })
+      .then((response) => {
+        const data = response.data.map((element: any) => {
+          return {
+            id: element.id,
+            title: element.title,
+            originalTitle: element.originalTitle,
+            originalLanguage: element.originalLanguage,
+            overview: element.overview,
+            voteAverage: element.voteAverage,
+            imagesPath: {
+              backdropPath: element.imagesPath.backdropPath,
+              posterPath: element.imagesPath.posterPath,
+            },
+            releaseDate: element.releaseDate,
+            genres: element.genres,
+          };
         });
-    } else {
-      setHasItensToLoad(false);
-    }
-  }, [moviesPage, moviesSort]);
+        setMovies([...movies, ...data]);
+        if (moviesPage == 500 || data.length == 0) {
+          setHasItensToLoad(false);
+        }
+      });
+  }, [moviesPage, moviesSort, movieSearch]);
   return (
     <>
       <Header />
       <main className="flex flex-col gap-10 w-11/12 mx-auto my-6">
-        <Tabs tabs={Object.keys(tabs)} onSelectTab={onSelectTab} />
+        <div className="flex justify-between">
+          <Tabs tabs={Object.keys(tabs)} onSelectTab={onSelectTab} />
+          <div className="flex items-center border-b-2 w-2/5 text-zinc-200 ">
+            <input
+              ref={inputRef}
+              value={movieSearch ?? ""}
+              onChange={(event) => {
+                handleSearch(event.target.value);
+              }}
+              type="text"
+              className="pl-1 font-lato font-bold text-lg flex-1 bg-transparent focus:outline-none"
+            />
+            <button>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-7 w-7"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
         <div className="flex flex-wrap gap-10 justify-center w-full">
           {movies.map((movie, index) => {
             return <MovieCard key={index} movie={movie} />;
