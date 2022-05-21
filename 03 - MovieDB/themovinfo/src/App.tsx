@@ -1,3 +1,4 @@
+import moment from "moment";
 import { useEffect, useRef, useState } from "react";
 import "./App.css";
 import { Carousel } from "./components/carousel";
@@ -49,12 +50,14 @@ function App() {
 
   useEffect(() => {
     if (moviesPage <= 500) {
+      console.log(moment().format("YYYY-MM-DD"));
       api
         .get("/movie", {
           params: {
             language: "pt-BR",
             page: moviesPage,
             sort_by: moviesSort,
+            "release_date.lte": moment().format("YYYY-MM-DD"),
           },
         })
         .then((response) => {
