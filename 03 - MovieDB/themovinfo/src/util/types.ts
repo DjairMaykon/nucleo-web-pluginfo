@@ -2,6 +2,8 @@ export type Movie = {
   id: number;
   title: string;
   originalTitle: string;
+  originalLanguage: string;
+  isAdult: boolean;
   overview: string;
   voteAverage: number;
   imagesPath: {

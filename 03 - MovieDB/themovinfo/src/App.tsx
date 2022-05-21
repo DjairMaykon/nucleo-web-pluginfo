@@ -28,6 +28,7 @@ function App() {
                 id: element.id,
                 title: element.title,
                 originalTitle: element.originalTitle,
+                originalLanguage: element.originalLanguage,
                 overview: element.overview,
                 voteAverage: element.voteAverage,
                 imagesPath: {
