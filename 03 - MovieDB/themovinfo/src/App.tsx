@@ -49,7 +49,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    if (moviesPage <= 500) {
+    if (moviesPage <= 501) {
       console.log(moment().format("YYYY-MM-DD"));
       api
         .get("/movie", {
@@ -97,7 +97,7 @@ function App() {
           {hasItensToLoad && (
             <article
               ref={loadMoreRef}
-              className="group w-full h-[40rem] animate-pulse flex flex-col gap-3 items-center rounded-md max-w-md bg-slate-400"
+              className="group w-full h-[35rem] animate-pulse flex flex-col gap-3 items-center rounded-md max-w-md bg-slate-400"
             />
           )}
         </div>
