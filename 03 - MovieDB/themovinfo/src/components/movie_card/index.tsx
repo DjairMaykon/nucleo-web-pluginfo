@@ -1,3 +1,13 @@
+// TO-DO
+// > 768px mudar o card
+// exibir generos do filme no card do filme
+// barra de pesquisa
+// tela do filme com:
+//     filmes similares e recomendações
+//     trailers
+//     diretores
+//     atores
+// menu dropdown para escolher generos
 import { Movie } from "../../util/types";
 import moment from "moment";
 
@@ -19,21 +29,19 @@ export function MovieCard({ movie }: MovieCardProps) {
   }
 
   return (
-    <article className="group w-fit flex flex-col gap-3 items-center rounded-md max-w-md bg-gradient-to-b from-slate-800 via-slate-600 to-slate-400 pb-4">
-      <figure className="w-9/12 relative -top-2">
+    <article className="group w-fit flex flex-col md:flex-row gap-3 items-center md:items-start md:justify-center md:py-5  rounded-md max-w-md md:max-w-2xl bg-gradient-to-b md:bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400">
+      <figure className="w-9/12 md:w-auto relative -top-2 md:top-0">
         <img
           className="rounded-md"
           src={movie.imagesPath.posterPath ?? imageNotFound}
           alt=""
         />
       </figure>
-      <section className="flex flex-col gap-2.5 justify-start w-9/12">
+      <section className="flex flex-col gap-4 justify-start w-9/12">
         <header>
           <h2 className="text-2xl text-stone-900 font-bold">{movie.title}</h2>
           <h4 className="text-xs">Titulo original: {movie.originalTitle}</h4>
-        </header>
-        <div className="flex flex-col gap-1 h-36">
-          <div className="flex gap-1">
+          <div className="flex gap-1 mt-2">
             <div className="flex gap-1 bg-cyan-700 w-fit p-1.5 text-xs rounded-xl">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +60,7 @@ export function MovieCard({ movie }: MovieCardProps) {
               )}
             </div>
             <div className="bg-[#354e6f] w-fit p-1.5 text-xs rounded-xl">
-              idioma: {movie.originalLanguage}
+              Idioma: {movie.originalLanguage}
             </div>
             {movie.isAdult && (
               <svg
@@ -67,16 +75,16 @@ export function MovieCard({ movie }: MovieCardProps) {
               </svg>
             )}
           </div>
-          <p
-            style={{ lineClamp: 4 }}
-            className="font-lato text-sm font-bold text-stone-800 text-justify"
-          >
-            {movie.overview}
-          </p>
-        </div>
+        </header>
+        <p
+          style={{ lineClamp: 4 }}
+          className="font-lato text-sm font-bold text-stone-800 text-justify overflow-hidden"
+        >
+          {movie.overview.length ? movie.overview : "Sinopse não encontrada"}
+        </p>
       </section>
       <div
-        className={`flex gap-2 relative left-[40.8%] bottom-[90%] ${getColorVoteBadge()} w-[25%] p-2 before:content('') before:border-8 before:border-l-transparent before:border-b-transparent before:border-t-transparent before:absolute before:right-1 before:-bottom-2 before:rotate-45 before:block text-zinc-200`}
+        className={`flex gap-2 relative left-[40.8%] bottom-[90%] md:left-[1.8%] md:bottom-0 md:h-fit ${getColorVoteBadge()} w-[25%] p-2 before:content('') before:border-8 before:border-l-transparent before:border-b-transparent before:border-t-transparent before:absolute before:right-1 before:-bottom-2 before:rotate-45 before:block text-zinc-200`}
       >
         <svg
           className="w-6 h-6 fill-current"
