@@ -38,6 +38,8 @@ export class AxiosApiService implements ApiService {
             },
             title: element.title as string,
             originalTitle: element.original_title as string,
+            originalLanguage: element.original_language as string,
+            isAdult: element.adult as boolean,
             overview: element.overview as string,
             voteAverage: element.vote_average as number,
             releaseDate: element.release_date as string,
