@@ -29,15 +29,15 @@ export function MovieCard({ movie }: MovieCardProps) {
   }
 
   return (
-    <article className="group w-fit flex flex-col md:flex-row gap-3 items-center md:items-start md:justify-center md:py-5  rounded-md max-w-md md:max-w-2xl bg-gradient-to-b md:bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400">
-      <figure className="w-9/12 md:w-auto relative -top-2 md:top-0">
+    <article className="group w-fit flex flex-col md:flex-row gap-3 items-center md:items-start md:justify-center md:p-5 rounded-md max-w-md md:max-w-[35rem] bg-gradient-to-b md:bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400">
+      <figure className="w-9/12 md:w-8/12 relative -top-2 md:top-0">
         <img
           className="rounded-md"
           src={movie.imagesPath.posterPath ?? imageNotFound}
           alt=""
         />
       </figure>
-      <section className="flex flex-col gap-4 justify-start w-9/12">
+      <section className="flex flex-col gap-4 justify-start w-9/12 md:w-11/12">
         <header>
           <h2 className="text-2xl text-stone-900 font-bold">{movie.title}</h2>
           <h4 className="text-xs">Titulo original: {movie.originalTitle}</h4>
@@ -83,17 +83,19 @@ export function MovieCard({ movie }: MovieCardProps) {
           {movie.overview.length ? movie.overview : "Sinopse não encontrada"}
         </p>
       </section>
-      <div
-        className={`flex gap-2 relative left-[40.8%] bottom-[90%] md:left-[1.8%] md:bottom-0 md:h-fit ${getColorVoteBadge()} w-[25%] p-2 before:content('') before:border-8 before:border-l-transparent before:border-b-transparent before:border-t-transparent before:absolute before:right-1 before:-bottom-2 before:rotate-45 before:block text-zinc-200`}
-      >
-        <svg
-          className="w-6 h-6 fill-current"
-          viewBox="0 0 20 20"
-          fill="currentColor"
+      <div className="md:w-0 relative left-[40%] bottom-[90%] md:left-[-12.5%] md:bottom-0 ">
+        <div
+          className={`flex gap-2 md:h-fit ${getColorVoteBadge()} w-24 p-2 before:content('') before:border-8 before:border-l-transparent before:border-b-transparent before:border-t-transparent before:absolute before:right-1 before:-bottom-2 md:before:-right-[5.8rem] before:rotate-45 before:block text-zinc-200`}
         >
-          <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-        </svg>
-        {movie.voteAverage}
+          <svg
+            className="w-6 h-6 fill-current"
+            viewBox="0 0 20 20"
+            fill="currentColor"
+          >
+            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+          </svg>
+          {movie.voteAverage}
+        </div>
       </div>
     </article>
   );
