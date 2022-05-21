@@ -17,41 +17,70 @@ function App() {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [moviesPage, setMoviesPage] = useState<number>(1);
   const [moviesSort, setMoviesSort] = useState<string>(tabs.Popular);
-  const [loadingItens, setLoadingItens] = useState<boolean>(false);
+  const [hasItensToLoad, setHasItensToLoad] = useState<boolean>(true);
+
+  const loadMoreRef = useRef(null);
 
   function onSelectTab(tab: string) {
+    setMoviesPage(1);
+    setMovies([]);
     setMoviesSort(tabs[tab as "Popular" | "Recente" | "Bem votados"]);
   }
 
   useEffect(() => {
-    api
-      .get("/movie", {
-        params: {
-          language: "pt-BR",
-          page: moviesPage,
-          sort_by: moviesSort,
-        },
-      })
-      .then((response) => {
-        setMovies(
-          response.data.map((element: any) => {
-            return {
-              id: element.id,
-              title: element.title,
-              originalTitle: element.originalTitle,
-              originalLanguage: element.originalLanguage,
-              overview: element.overview,
-              voteAverage: element.voteAverage,
-              imagesPath: {
-                backdropPath: element.imagesPath.backdropPath,
-                posterPath: element.imagesPath.posterPath,
-              },
-              releaseDate: element.releaseDate,
-              genres: element.genres,
-            };
-          })
-        );
-      });
+    const options = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 1.0,
+    };
+
+    const observer = new IntersectionObserver((entities) => {
+      const target = entities[0];
+
+      if (target.isIntersecting) {
+        setMoviesPage((old) => old + 1);
+      }
+    }, options);
+
+    if (loadMoreRef.current) {
+      observer.observe(loadMoreRef.current);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (moviesPage <= 500) {
+      api
+        .get("/movie", {
+          params: {
+            language: "pt-BR",
+            page: moviesPage,
+            sort_by: moviesSort,
+          },
+        })
+        .then((response) => {
+          setMovies([
+            ...movies,
+            ...response.data.map((element: any) => {
+              return {
+                id: element.id,
+                title: element.title,
+                originalTitle: element.originalTitle,
+                originalLanguage: element.originalLanguage,
+                overview: element.overview,
+                voteAverage: element.voteAverage,
+                imagesPath: {
+                  backdropPath: element.imagesPath.backdropPath,
+                  posterPath: element.imagesPath.posterPath,
+                },
+                releaseDate: element.releaseDate,
+                genres: element.genres,
+              };
+            }),
+          ]);
+        });
+    } else {
+      setHasItensToLoad(false);
+    }
   }, [moviesPage, moviesSort]);
   return (
     <>
@@ -62,6 +91,12 @@ function App() {
           {movies.map((movie, index) => {
             return <MovieCard key={index} movie={movie} />;
           })}
+          {hasItensToLoad && (
+            <article
+              ref={loadMoreRef}
+              className="group w-full h-[40rem] animate-pulse flex flex-col gap-3 items-center rounded-md max-w-md bg-slate-400"
+            />
+          )}
         </div>
       </main>
     </>
