@@ -1,7 +1,7 @@
 export class DefaultError extends Error {
-  status: number;
+  status: 401 | 422;
 
-  constructor(status: number) {
+  constructor(status: 401 | 422) {
     super();
     this.status = status;
   }
@@ -12,8 +12,6 @@ export class DefaultError extends Error {
         return 'Api Key unauthorized';
       case 422:
         return 'Pagination exceeded limit';
-      default:
-        return 'Unknow error';
     }
   }
 }

@@ -6,7 +6,7 @@ jest.mock('axios');
 const mockedAxios = axios as jest.Mocked<typeof axios>;
 
 describe('AxiosApiService', () => {
-  it('should perform a get request on /discover/movie/ when call getMovies', async () => {
+  it('should perform a get request on discover/movie/ when call getMovies without query parameter', async () => {
     const axiosApiService = new AxiosApiService('', '');
 
     mockedAxios.create = jest.fn(() => mockedAxios);
@@ -79,25 +79,45 @@ describe('AxiosApiService', () => {
     const movies = await axiosApiService.getMovies();
 
     expect(movies).toEqual(expectedMovies);
-    expect(mockedAxios.get).toBeCalledWith('discover/movie/', { undefined });
+    expect(mockedAxios.get).toBeCalledWith('discover/movie/', {});
+  });
+  it('should perform a get request on search/movie/ when call getMovies with query parameter', async () => {
+    const axiosApiService = new AxiosApiService('', '');
+
+    mockedAxios.create = jest.fn(() => mockedAxios);
+
+    await axiosApiService.getMovies({ query: 'teste' });
+
+    expect(mockedAxios.get).toBeCalledWith('search/movie/', { params: { query: 'teste' } });
+  });
+  it('should perform a get request on search/movie/ with param release_date.lte = undefined when call getMovies with query and release_date.lte parameter', async () => {
+    const axiosApiService = new AxiosApiService('', '');
+
+    mockedAxios.create = jest.fn(() => mockedAxios);
+
+    await axiosApiService.getMovies({ query: 'teste', 'release_date.lte': '2022-02-02' });
+
+    expect(mockedAxios.get).toBeCalledWith('search/movie/', { params: { query: 'teste', 'release_date.lte': undefined } });
   });
   it('shold throw default error if error status be 401 or 422', async () => {
     const axiosApiService = new AxiosApiService('', '');
 
     mockedAxios.create = jest.fn(() => mockedAxios);
+
     mockedAxios.get.mockRejectedValue({ response: { status: 401 } });
-
     try {
       await axiosApiService.getMovies();
     } catch (e) {
       expect(e).toBeInstanceOf(DefaultError);
+      expect((e as DefaultError).getDefaultMessage()).toEqual('Api Key unauthorized');
     }
-    mockedAxios.get.mockRejectedValue({ response: { status: 422 } });
 
+    mockedAxios.get.mockRejectedValue({ response: { status: 422 } });
     try {
       await axiosApiService.getMovies();
     } catch (e) {
       expect(e).toBeInstanceOf(DefaultError);
+      expect((e as DefaultError).getDefaultMessage()).toEqual('Pagination exceeded limit');
     }
   });
 });
