@@ -59,7 +59,7 @@ function App() {
 
   useEffect(() => {
     api
-      .get("/movie", {
+      .get<Movie[]>("/movie", {
         params: {
           query: movieSearch,
           language: "pt-BR",
@@ -69,24 +69,8 @@ function App() {
         },
       })
       .then((response) => {
-        const data = response.data.map((element: any) => {
-          return {
-            id: element.id,
-            title: element.title,
-            originalTitle: element.originalTitle,
-            originalLanguage: element.originalLanguage,
-            overview: element.overview,
-            voteAverage: element.voteAverage,
-            imagesPath: {
-              backdropPath: element.imagesPath.backdropPath,
-              posterPath: element.imagesPath.posterPath,
-            },
-            releaseDate: element.releaseDate,
-            genres: element.genres,
-          };
-        });
-        setMovies([...movies, ...data]);
-        if (moviesPage == 500 || data.length == 0) {
+        setMovies([...movies, ...response.data]);
+        if (moviesPage == 500 || response.data.length == 0) {
           setHasItensToLoad(false);
         }
       });

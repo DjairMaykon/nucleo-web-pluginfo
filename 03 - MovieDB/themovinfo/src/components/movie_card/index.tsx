@@ -8,16 +8,20 @@
 //     diretores
 //     atores
 // menu dropdown para escolher generos
-import { Movie } from "../../util/types";
+import { Genre, Movie } from "../../util/types";
 import moment from "moment";
 
 import imageNotFound from "../../assets/image-not-found.jpg";
 import "./style.css";
+import { useEffect, useState } from "react";
+import api from "../../service/api";
 
 type MovieCardProps = {
   movie: Movie;
 };
 export function MovieCard({ movie }: MovieCardProps) {
+  const [genres, setGenres] = useState<string[]>([]);
+
   function getColorVoteBadge() {
     let color = "bg-lime-800";
     if (movie.voteAverage < 4.5) {
@@ -27,6 +31,24 @@ export function MovieCard({ movie }: MovieCardProps) {
     }
     return color;
   }
+
+  useEffect(() => {
+    api
+      .get<Genre[]>("/genre", {
+        params: {
+          language: "pt-BR",
+        },
+      })
+      .then((response) => {
+        setGenres(
+          response.data
+            .filter((genre, i) => {
+              return movie.genres.includes(genre.id);
+            })
+            .map((genre, i) => genre.name)
+        );
+      });
+  }, []);
 
   return (
     <article className="group w-fit flex flex-col md:flex-row gap-3 items-center md:items-start md:justify-center md:p-5 rounded-md max-w-md md:max-w-[35rem] bg-gradient-to-b md:bg-gradient-to-r from-slate-800 via-slate-600 to-slate-400">
@@ -44,7 +66,7 @@ export function MovieCard({ movie }: MovieCardProps) {
           </h2>
           <h4 className="text-xs">Titulo original: {movie.originalTitle}</h4>
           <div className="flex gap-1 mt-2">
-            <div className="flex gap-1 bg-cyan-700 w-fit p-1.5 text-xs rounded-xl">
+            <div className="flex gap-1 bg-cyan-700 w-fit p-1.5 text-xs rounded-xl text-zinc-300 font-bold">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-4 w-4"
@@ -61,7 +83,7 @@ export function MovieCard({ movie }: MovieCardProps) {
                 "DD [de] MMM [de] YYYY"
               )}
             </div>
-            <div className="bg-[#354e6f] w-fit p-1.5 text-xs rounded-xl">
+            <div className="bg-[#354e6f] w-fit p-1.5 text-xs rounded-xl text-zinc-300 font-bold">
               Idioma: {movie.originalLanguage}
             </div>
             {movie.isAdult && (
@@ -84,6 +106,13 @@ export function MovieCard({ movie }: MovieCardProps) {
         >
           {movie.overview.length ? movie.overview : "Sinopse não encontrada"}
         </p>
+        <div className="flex gap-2 flex-wrap text-zinc-300 font-bold">
+          {genres.map((genre, i) => (
+            <div className="bg-[#354e6f] w-fit p-1.5 text-xs rounded-xl h-fit">
+              {genre}
+            </div>
+          ))}
+        </div>
       </section>
       <div className="md:w-0 relative left-[40%] bottom-[90%] md:left-[-12.5%] md:bottom-0 ">
         <div

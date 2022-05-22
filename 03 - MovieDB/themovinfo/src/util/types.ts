@@ -13,3 +13,8 @@ export type Movie = {
   releaseDate: string;
   genres: number[];
 };
+
+export type Genre = {
+  id: number;
+  name: string;
+};
