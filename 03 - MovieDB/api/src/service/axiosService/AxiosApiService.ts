@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { ApiService } from '@service/ApiService';
 import { getMoviesParams, Movie } from '@controllers/Movie.controller';
+import { getGenresParams, Genre } from '@controllers/Genre.controller';
 import { DefaultError } from '@commons/DefaultError';
 
 export class AxiosApiService implements ApiService {
@@ -53,9 +54,31 @@ export class AxiosApiService implements ApiService {
         });
       })
       .catch((error) => {
-        if ([401, 422].includes(error.response.status)) throw new DefaultError(error.response.status as 401 | 422);
+        if ([401, 422].includes(error.response.status)) throw new DefaultError(error.response.status);
       });
 
     return movies;
+  }
+
+  async getGenres(params?: getGenresParams): Promise<Genre[]> {
+    const genres: Genre[] = [];
+
+    const axios = await this.getAxiosClient();
+
+    await axios
+      .get('genre/movie/list', { params })
+      .then((response) => {
+        response.data.genres.forEach((element: any) => {
+          genres.push({
+            id: element.id as number,
+            name: element.name as string,
+          });
+        });
+      })
+      .catch((error) => {
+        if (error.status == 401) throw new DefaultError(error.response.status);
+      });
+
+    return genres;
   }
 }
