@@ -53,7 +53,7 @@ export class AxiosApiService implements ApiService {
         });
       })
       .catch((error) => {
-        if ([401, 422].includes(error.response.status)) throw new DefaultError(error.response.status as number);
+        if ([401, 422].includes(error.response.status)) throw new DefaultError(error.response.status as 401 | 422);
       });
 
     return movies;

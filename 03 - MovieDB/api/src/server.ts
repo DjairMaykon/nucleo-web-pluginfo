@@ -15,5 +15,5 @@ app.use(routes);
 app.use(errorHandling);
 
 app.listen(process.env.port, () => {
-  console.log('listening on port ' + process.env.port);
+  console.log('listening on port ' + process.env.PORT);
 });
