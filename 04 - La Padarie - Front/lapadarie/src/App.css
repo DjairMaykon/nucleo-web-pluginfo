@@ -7,12 +7,20 @@
   padding-top: 80px;
 }
 
-main {
+#main-principal {
   position: relative;
   top: -72px;
+
+  width: fit-content;
+  max-width: 1235px;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
 }
 
-main .cards {
+#main-principal .cards {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -20,8 +28,34 @@ main .cards {
 }
 
 @media (min-width: 1080px) {
-  main .cards {
+  #main-principal .cards {
     justify-content: center;
     flex-direction: row;
   }
+}
+
+#main-principal .queue {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+@media (min-width: 1080px) {
+  #main-principal .queue {
+    gap: 25px;
+  }
+}
+
+#main-principal .queue .add-item {
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 24px;
+
+  color: #5f3305;
+}
+
+#main-principal .queue .items {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
 }

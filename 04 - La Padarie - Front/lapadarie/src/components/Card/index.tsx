@@ -18,10 +18,10 @@ export function Card({ title, icon, value, bgColor, textColor }: CardProps) {
       className="card"
     >
       <header>
-        <h1>{title}</h1>
+        <h1 className="card-title">{title}</h1>
         {icon}
       </header>
-      <h1>{value}</h1>
+      <h1 className="card-content">{value}</h1>
     </div>
   );
 }
