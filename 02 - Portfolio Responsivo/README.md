@@ -31,6 +31,6 @@ O projeto Portifólio Responsivo tem por objetivo aprimorar o aprendizado de HTM
 - Menu Hamburguer
 - Formulario de contato enviando email pelo meu gmail
 
-# Resultados :smile
+# Resultados :smile:
 
 ## [Acesse](https://djairmaykon.github.io/)
