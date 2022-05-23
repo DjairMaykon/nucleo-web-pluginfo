@@ -1,0 +1,27 @@
+#header-principal {
+  height: 374px;
+  background-color: #965a1b;
+
+  display: flex;
+  justify-content: center;
+  padding-top: 80px;
+}
+
+main {
+  position: relative;
+  top: -72px;
+}
+
+main .cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+}
+
+@media (min-width: 1080px) {
+  main .cards {
+    justify-content: center;
+    flex-direction: row;
+  }
+}
