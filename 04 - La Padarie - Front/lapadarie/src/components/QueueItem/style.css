@@ -33,3 +33,7 @@
 .item .item-content h2 strong {
   font-weight: 700;
 }
+
+.item .delete-icon {
+  cursor: pointer;
+}

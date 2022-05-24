@@ -8,6 +8,7 @@ import { QueueItem } from "./components/QueueItem";
 import { Modal } from "./components/Modal";
 import { useState } from "react";
 
+const breadPrice = 0.5;
 export type Sale = {
   client: string;
   quantity: number;
@@ -64,9 +65,12 @@ function App() {
           <div className="items">
             {sales.map((sale, i) => (
               <QueueItem
-                title={sale.client}
-                totalBread={sale.quantity}
-                totalPayment={sale.quantity * 0.5}
+                sale={sale}
+                saleIndex={i}
+                breadPrice={breadPrice}
+                onDelete={(saleToDelete) =>
+                  setSales(sales.filter((el, i) => i != saleToDelete))
+                }
               />
             ))}
           </div>
