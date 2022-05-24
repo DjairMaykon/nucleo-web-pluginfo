@@ -6,10 +6,14 @@ import { IconCart } from "./assets/IconCart";
 import { IconMoney } from "./assets/IconMoney";
 import { IconTrash } from "./assets/IconTrash";
 import { QueueItem } from "./components/QueueItem";
+import { Modal } from "./components/Modal";
+import { useState } from "react";
 
 function App() {
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   return (
     <>
+      <Modal modalIsOpen={modalIsOpen} onCancel={() => setModalIsOpen(false)} />
       <header id="header-principal">
         <LogoSVG />
       </header>
@@ -26,7 +30,14 @@ function App() {
           />
         </div>
         <div className="queue">
-          <a className="add-item">+ Adicionar pessoa a fila</a>
+          <a
+            className="add-item"
+            onClick={() => {
+              setModalIsOpen(true);
+            }}
+          >
+            + Adicionar pessoa a fila
+          </a>
           <div className="items">
             <QueueItem
               title="Alexandre Shyjada Sousa"

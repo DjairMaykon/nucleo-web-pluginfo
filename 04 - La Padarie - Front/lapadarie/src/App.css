@@ -52,6 +52,8 @@
   line-height: 24px;
 
   color: #5f3305;
+
+  cursor: pointer;
 }
 
 #main-principal .queue .items {
