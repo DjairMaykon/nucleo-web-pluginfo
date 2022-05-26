@@ -10,21 +10,47 @@ import { useState } from "react";
 
 const breadPrice = 0.5;
 export type Sale = {
+  id: number;
   client: string;
   quantity: number;
 };
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
   const [sales, setSales] = useState<Sale[]>([]);
+  const [saleToEdit, setSaleToEdit] = useState<Sale | undefined>(undefined);
+
+  function handleEdit(saleToEdit: Sale) {
+    setSaleToEdit(saleToEdit);
+    setModalIsOpen(true);
+  }
+
+  function handleSend(client: string, quantity: number) {
+    if (saleToEdit) {
+      setSales(
+        sales.map((s) => {
+          if (s.id == saleToEdit.id)
+            return {
+              id: s.id,
+              client,
+              quantity,
+            };
+          else return s;
+        })
+      );
+      setSaleToEdit(undefined);
+    } else {
+      setSales([...sales, { id: sales.length, client, quantity }]);
+    }
+    setModalIsOpen(false);
+  }
 
   return (
     <>
       <Modal
+        sale={saleToEdit}
         modalIsOpen={modalIsOpen}
         onCancel={() => setModalIsOpen(false)}
-        onSend={(sale: Sale) => {
-          setSales([...sales, sale]);
-        }}
+        onSend={handleSend}
       />
       <header id="header-principal">
         <LogoSVG />
@@ -65,11 +91,12 @@ function App() {
           <div className="items">
             {sales.map((sale, i) => (
               <QueueItem
+                key={i}
                 sale={sale}
-                saleIndex={i}
                 breadPrice={breadPrice}
+                onEdit={handleEdit}
                 onDelete={(saleToDelete) =>
-                  setSales(sales.filter((el, i) => i != saleToDelete))
+                  setSales(sales.filter((s) => s.id != saleToDelete.id))
                 }
               />
             ))}

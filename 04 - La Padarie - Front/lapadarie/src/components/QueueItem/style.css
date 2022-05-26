@@ -34,6 +34,13 @@
   font-weight: 700;
 }
 
-.item .delete-icon {
+.item .icons {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+  justify-content: end;
+}
+
+.item .icons a {
   cursor: pointer;
 }

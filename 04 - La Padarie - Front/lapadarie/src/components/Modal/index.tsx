@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
 import { Sale } from "../../App";
 import "./style.css";
@@ -7,42 +7,48 @@ ReactModal.setAppElement("#root");
 
 type ModalProps = {
   modalIsOpen: boolean;
+  sale?: Sale;
   onCancel: () => void;
-  onSend: (sale: Sale) => void;
+  onSend: (client: string, quantity: number) => void;
 };
-export function Modal({ modalIsOpen, onCancel, onSend }: ModalProps) {
-  const [sale, setSale] = useState<Sale | null>(null);
+export function Modal({ sale, modalIsOpen, onCancel, onSend }: ModalProps) {
+  const [client, setClient] = useState<string | null>(
+    sale ? sale.client : null
+  );
+  const [quantity, setQuantity] = useState<number | null>(
+    sale ? sale.quantity : null
+  );
 
   function handleSend() {
-    if (sale) onSend(sale);
-    setSale(null);
-    onCancel();
+    if (client && quantity && client?.length > 0 && quantity > 0)
+      onSend(client, quantity);
+    setClient(null);
+    setQuantity(null);
   }
+  useEffect(() => {
+    if (sale) {
+      setClient(sale.client);
+      setQuantity(sale.quantity);
+    }
+  }, [sale]);
   return (
     <ReactModal isOpen={modalIsOpen} id="modal">
       <h1 className="modal-title">Adicionar pessoa a fila</h1>
       <form onSubmit={(e) => e.preventDefault()}>
         <input
           type="text"
-          value={sale?.client ?? ""}
+          value={client ?? ""}
           onChange={(e) => {
-            if (e.target.value.length > 0)
-              setSale({
-                client: e.target.value,
-                quantity: sale?.quantity ?? 0,
-              });
+            if (e.target.value.length > 0) setClient(e.target.value);
           }}
           placeholder="Nome completo do cliente"
         />
         <input
           type="number"
-          value={sale?.quantity ?? 0}
+          value={quantity ?? 0}
           onChange={(e) => {
             if (e.target.value.length > 0)
-              setSale({
-                quantity: parseInt(e.target.value),
-                client: sale?.client ?? "",
-              });
+              setQuantity(parseInt(e.target.value));
           }}
           placeholder="Total de pães:"
         />
@@ -50,7 +56,7 @@ export function Modal({ modalIsOpen, onCancel, onSend }: ModalProps) {
           <button className="modal-button-send" onClick={handleSend}>
             Enviar
           </button>
-          <button className="modal-button-cancel" onClick={() => onCancel()}>
+          <button className="modal-button-cancel" onClick={onCancel}>
             Cancelar
           </button>
         </div>

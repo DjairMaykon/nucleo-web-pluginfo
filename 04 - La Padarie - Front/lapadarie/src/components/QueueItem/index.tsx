@@ -1,18 +1,19 @@
 import { Sale } from "../../App";
+import { IconPen } from "../../assets/IconPen";
 import { IconTrash } from "../../assets/IconTrash";
 import "./style.css";
 
 type QueueItemProps = {
   sale: Sale;
-  saleIndex: number;
   breadPrice: number;
-  onDelete: (sale: number) => void;
+  onDelete: (saleId: Sale) => void;
+  onEdit: (saleId: Sale) => void;
 };
 export function QueueItem({
   sale,
   breadPrice,
+  onEdit,
   onDelete,
-  saleIndex,
 }: QueueItemProps) {
   return (
     <div className="item">
@@ -28,9 +29,14 @@ export function QueueItem({
           </h2>
         </div>
       </main>
-      <a className="delete-icon" onClick={() => onDelete(saleIndex)}>
-        <IconTrash />
-      </a>
+      <div className="icons">
+        <a className="edit-icon" onClick={() => onEdit(sale)}>
+          <IconPen />
+        </a>
+        <a className="delete-icon" onClick={() => onDelete(sale)}>
+          <IconTrash />
+        </a>
+      </div>
     </div>
   );
 }
