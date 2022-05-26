@@ -8,6 +8,7 @@ import { QueueItem } from "./components/QueueItem";
 import { Modal } from "./components/Modal";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
+import toast, { Toaster } from "react-hot-toast";
 
 const breadPrice = 0.5;
 export type Sale = {
@@ -44,14 +45,17 @@ function App() {
         })
       );
       setSaleToEdit(undefined);
+      toast.success("Pedido editado com sucesso!");
     } else {
       setSales([...sales, { id: sales.length, client, quantity }]);
+      toast.success("Pedido adicionado com sucesso!");
     }
     setModalIsOpen(false);
   }
 
   return (
     <>
+      <Toaster />
       <Modal
         sale={saleToEdit}
         modalIsOpen={modalIsOpen}
