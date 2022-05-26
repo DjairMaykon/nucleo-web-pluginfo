@@ -15,15 +15,26 @@ export function Modal({ sale, modalIsOpen, onCancel, onSend }: ModalProps) {
   const [client, setClient] = useState<string | null>(
     sale ? sale.client : null
   );
+  const [clientInvalid, setCLientInvalid] = useState<boolean>(false);
   const [quantity, setQuantity] = useState<number | null>(
     sale ? sale.quantity : null
   );
+  const [quantityInvalid, setQuantityInvalid] = useState<boolean>(false);
 
   function handleSend() {
-    if (client && quantity && client?.length > 0 && quantity > 0)
+    setCLientInvalid(false);
+    setQuantityInvalid(false);
+    if (!client || client.length == 0) {
+      setCLientInvalid(true);
+    }
+    if (!quantity || quantity <= 0) {
+      setQuantityInvalid(true);
+    }
+    if (client && quantity && quantity > 0) {
       onSend(client, quantity);
-    setClient(null);
-    setQuantity(null);
+      setClient(null);
+      setQuantity(null);
+    }
   }
   useEffect(() => {
     if (sale) {
@@ -35,23 +46,30 @@ export function Modal({ sale, modalIsOpen, onCancel, onSend }: ModalProps) {
     <ReactModal isOpen={modalIsOpen} id="modal">
       <h1 className="modal-title">Adicionar pessoa a fila</h1>
       <form onSubmit={(e) => e.preventDefault()}>
-        <input
-          type="text"
-          value={client ?? ""}
-          onChange={(e) => {
-            if (e.target.value.length > 0) setClient(e.target.value);
-          }}
-          placeholder="Nome completo do cliente"
-        />
-        <input
-          type="number"
-          value={quantity ?? 0}
-          onChange={(e) => {
-            if (e.target.value.length > 0)
+        <div>
+          <input
+            className={clientInvalid ? "invalid" : ""}
+            type="text"
+            value={client ?? ""}
+            onChange={(e) => {
+              setClient(e.target.value);
+            }}
+            placeholder="Nome completo do cliente"
+          />
+          {clientInvalid && <p>Nome inválido</p>}
+        </div>
+        <div>
+          <input
+            className={quantityInvalid ? "invalid" : ""}
+            type="number"
+            value={quantity ?? 0}
+            onChange={(e) => {
               setQuantity(parseInt(e.target.value));
-          }}
-          placeholder="Total de pães:"
-        />
+            }}
+            placeholder="Total de pães:"
+          />
+          {quantityInvalid && <p>Total inválido</p>}
+        </div>
         <div className="modal-buttons">
           <button className="modal-button-send" onClick={handleSend}>
             Enviar

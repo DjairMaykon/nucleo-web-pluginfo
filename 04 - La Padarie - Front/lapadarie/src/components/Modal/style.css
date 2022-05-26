@@ -26,6 +26,8 @@
 }
 
 #modal form input {
+  width: 100%;
+
   padding: 16px 25px;
 
   background: #f5f5f5;
@@ -34,6 +36,15 @@
   font-weight: 400;
   font-size: 12px;
   line-height: 18px;
+}
+
+#modal form input.invalid {
+  border: 1px #8f1919 solid;
+}
+
+#modal form input.invalid ~ p {
+  font-size: 12px;
+  color: #8f1919;
 }
 
 #modal form input::placeholder {
