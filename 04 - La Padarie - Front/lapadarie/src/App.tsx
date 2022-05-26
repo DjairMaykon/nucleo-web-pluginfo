@@ -6,7 +6,8 @@ import { IconCart } from "./assets/IconCart";
 import { IconMoney } from "./assets/IconMoney";
 import { QueueItem } from "./components/QueueItem";
 import { Modal } from "./components/Modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 
 const breadPrice = 0.5;
 export type Sale = {
@@ -16,8 +17,13 @@ export type Sale = {
 };
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [sales, setSales] = useState<Sale[]>([]);
+  const [cookies, setCookie] = useCookies(["sales"]);
+  const [sales, setSales] = useState<Sale[]>((cookies.sales as Sale[]) ?? []);
   const [saleToEdit, setSaleToEdit] = useState<Sale | undefined>(undefined);
+
+  useEffect(() => {
+    setCookie("sales", sales, { path: "/" });
+  }, [sales]);
 
   function handleEdit(saleToEdit: Sale) {
     setSaleToEdit(saleToEdit);
