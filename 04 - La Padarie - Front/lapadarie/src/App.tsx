@@ -76,6 +76,9 @@ function App() {
           </div>
         </div>
       </main>
+      <footer id="footer-principal">
+        Com <span role="img">💛</span> Info Jr UFBA 2022
+      </footer>
     </>
   );
 }
