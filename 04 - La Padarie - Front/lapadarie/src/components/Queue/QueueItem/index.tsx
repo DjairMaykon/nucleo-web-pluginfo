@@ -1,10 +1,10 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Sale } from "../../App";
-import { IconPen } from "../../assets/IconPen";
-import { IconTimer } from "../../assets/IconTimer";
-import { IconTrash } from "../../assets/IconTrash";
+import { IconPen } from "../../../assets/IconPen";
+import { IconTimer } from "../../../assets/IconTimer";
+import { IconTrash } from "../../../assets/IconTrash";
+import { Sale } from "../../../utils/types";
 import "./style.css";
 
 type QueueItemProps = {

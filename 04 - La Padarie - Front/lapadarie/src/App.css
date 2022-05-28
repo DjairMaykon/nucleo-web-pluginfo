@@ -33,34 +33,6 @@
   }
 }
 
-#main-principal .queue {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-@media (min-width: 940px) {
-  #main-principal .queue {
-    gap: 25px;
-  }
-}
-
-#main-principal .queue .add-item {
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-
-  color: #5f3305;
-
-  cursor: pointer;
-}
-
-#main-principal .queue .items {
-  display: flex;
-  flex-direction: column;
-  gap: 25px;
-}
-
 #footer-principal {
   font-style: normal;
   font-weight: 400;

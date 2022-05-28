@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
-import { Sale } from "../../App";
+import { Sale } from "../../utils/types";
 import "./style.css";
 
 ReactModal.setAppElement("#root");
