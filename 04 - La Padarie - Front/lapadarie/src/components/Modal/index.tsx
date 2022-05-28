@@ -43,7 +43,15 @@ export function Modal({ sale, modalIsOpen, onCancel, onSend }: ModalProps) {
     }
   }, [sale]);
   return (
-    <ReactModal isOpen={modalIsOpen} id="modal">
+    <ReactModal
+      style={{
+        overlay: {
+          background: "rgba(229, 207, 148, 0.5)",
+        },
+      }}
+      isOpen={modalIsOpen}
+      className="modal"
+    >
       <h1 className="modal-title">Adicionar pessoa a fila</h1>
       <form onSubmit={(e) => e.preventDefault()}>
         <div>

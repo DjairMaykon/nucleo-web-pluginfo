@@ -1,9 +1,13 @@
-#modal {
+.modal {
   min-width: 330px;
   max-width: 605px;
-  margin: 0 auto;
   height: fit-content;
-  padding: 50px 30px 30px !important;
+  width: fit-content;
+  margin: 30vh auto;
+
+  padding: 30px;
+
+  background: #ffffff;
 
   display: flex;
   flex-direction: column;
@@ -11,7 +15,13 @@
   gap: 25px;
 }
 
-#modal .modal-title {
+@media (min-width: 940px) {
+  .modal form .modal-buttons {
+    flex-direction: row;
+  }
+}
+
+.modal .modal-title {
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
@@ -19,13 +29,13 @@
   color: #5f3305;
 }
 
-#modal form {
+.modal form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-#modal form input {
+.modal form input {
   width: 100%;
 
   padding: 16px 25px;
@@ -38,29 +48,35 @@
   line-height: 18px;
 }
 
-#modal form input.invalid {
+.modal form input.invalid {
   border: 1px #8f1919 solid;
 }
 
-#modal form input.invalid ~ p {
+.modal form input.invalid ~ p {
   font-size: 12px;
   color: #8f1919;
 }
 
-#modal form input::placeholder {
+.modal form input::placeholder {
   color: #7d7d7d;
 }
 
-#modal form .modal-buttons {
+.modal form .modal-buttons {
   display: flex;
   flex-direction: column;
   gap: 15px;
 }
 
-#modal form .modal-buttons button {
+@media (min-width: 940px) {
+  .modal form .modal-buttons {
+    flex-direction: row;
+  }
+}
+
+.modal form .modal-buttons button {
   border-radius: 5px;
   width: 100%;
-  padding: 18px 105px;
+  padding: 18px 5vw;
 
   font-style: normal;
   font-weight: 600;
@@ -71,11 +87,11 @@
   cursor: pointer;
 }
 
-#modal form .modal-buttons button.modal-button-send {
+.modal form .modal-buttons button.modal-button-send {
   background: #5f3305;
   color: #ffffff;
 }
-#modal form .modal-buttons button.modal-button-cancel {
+.modal form .modal-buttons button.modal-button-cancel {
   border: 1px solid #db1e1e;
   background: #ffffff;
   color: #db1e1e;
