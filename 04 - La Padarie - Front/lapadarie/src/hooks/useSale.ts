@@ -7,10 +7,15 @@ export function useSale(): [
   sales: Sale[],
   addSale: (client: string, quantity: number) => void,
   editSale: (sale: Sale, client: string, quantity: number) => void,
-  deleteSale: (sale: Sale) => void
+  deleteSale: (sale: Sale) => void,
+  breadPrice: number,
+  saleQuantity: () => number
 ] {
   const [cookies, setCookie] = useCookies(["sales"]);
   const [sales, setSales] = useState<Sale[]>((cookies.sales as Sale[]) ?? []);
+  const [breadPrice, setBreadPrice] = useState<number>(0.5);
+  const salesQuantity = () =>
+    sales.reduce((sum, sale) => sum + sale.quantity, 0);
 
   useEffect(() => {
     setCookie("sales", sales, { path: "/" });
@@ -44,5 +49,5 @@ export function useSale(): [
   function deleteSale(sale: Sale) {
     setSales(sales.filter((s) => s.id != sale.id));
   }
-  return [sales, addSale, editSale, deleteSale];
+  return [sales, addSale, editSale, deleteSale, breadPrice, salesQuantity];
 }

@@ -2,15 +2,24 @@ import { ReactElement } from "react";
 import "./style.css";
 
 type CardProps = {
+  id: string;
   title: string;
   icon: ReactElement;
   value: string;
   bgColor?: string;
   textColor?: string;
 };
-export function Card({ title, icon, value, bgColor, textColor }: CardProps) {
+export function Card({
+  id,
+  title,
+  icon,
+  value,
+  bgColor,
+  textColor,
+}: CardProps) {
   return (
     <div
+      id={id}
       style={{
         backgroundColor: bgColor ?? "#ffffff",
         color: textColor ?? "#000000",

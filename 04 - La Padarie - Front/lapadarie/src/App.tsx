@@ -11,11 +11,10 @@ import { Sale } from "./utils/types";
 import { Queue } from "./components/Queue";
 import { useSale } from "./hooks/useSale";
 
-const breadPrice = 0.5;
-
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [sales, addSale, editSale, deleteSale] = useSale();
+  const [sales, addSale, editSale, deleteSale, breadPrice, salesQuantity] =
+    useSale();
   const [saleToEdit, setSaleToEdit] = useState<Sale | undefined>(undefined);
 
   function handleEdit(saleToEdit: Sale) {
@@ -47,25 +46,24 @@ function App() {
         <LogoSVG />
       </header>
       <main id="main-principal">
-        <div className="cards">
+        <div id="cards">
           <Card
+            id="card-queue-quantity"
             title={"Pessoas na fila"}
             icon={<IconPeople />}
             value={sales.length.toString()}
           />
           <Card
-            title={"Pães vendidos"}
+            id="card-bread-sold"
+            title={"Pães vendidos "}
             icon={<IconCart />}
-            value={sales
-              .reduce((sum, sale) => sum + sale.quantity, 0)
-              .toString()}
+            value={salesQuantity().toString()}
           />
           <Card
+            id="card-cash-entry"
             title={"Entrada"}
             icon={<IconMoney />}
-            value={`R$ ${(
-              sales.reduce((sum, sale) => sum + sale.quantity, 0) * 0.5
-            ).toString()}`}
+            value={`R$ ${(salesQuantity() * breadPrice).toFixed(2).toString()}`}
             bgColor={"#5F3305"}
             textColor={"#FFFFFF"}
           />
