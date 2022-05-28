@@ -9,12 +9,14 @@ import { Modal } from "./components/Modal";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import toast, { Toaster } from "react-hot-toast";
+import moment, { Moment } from "moment";
 
 const breadPrice = 0.5;
 export type Sale = {
   id: number;
   client: string;
   quantity: number;
+  createdAt: Moment;
 };
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -40,6 +42,7 @@ function App() {
               id: s.id,
               client,
               quantity,
+              createdAt: s.createdAt,
             };
           else return s;
         })
@@ -47,7 +50,15 @@ function App() {
       setSaleToEdit(undefined);
       toast.success("Pedido editado com sucesso!");
     } else {
-      setSales([...sales, { id: sales.length, client, quantity }]);
+      setSales([
+        ...sales,
+        {
+          id: sales.length,
+          client,
+          quantity,
+          createdAt: moment(),
+        },
+      ]);
       toast.success("Pedido adicionado com sucesso!");
     }
     setModalIsOpen(false);

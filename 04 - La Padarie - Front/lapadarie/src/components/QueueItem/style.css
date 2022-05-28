@@ -11,10 +11,22 @@
   color: #5f3305;
 }
 
-.item .item-title {
+.item header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.item header .item-title {
   font-weight: 700;
   font-size: 16px;
   line-height: 24px;
+}
+
+.item header .item-time {
+  display: flex;
+  gap: 5px;
+  align-items: center;
 }
 
 @media (min-width: 1080px) {
