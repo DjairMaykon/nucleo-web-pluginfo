@@ -76,7 +76,8 @@
 .modal form .modal-buttons button {
   border-radius: 5px;
   width: 100%;
-  padding: 18px 5vw;
+  padding-top: 18px;
+  padding-bottom: 18px;
 
   font-style: normal;
   font-weight: 600;
@@ -85,6 +86,12 @@
   text-align: center;
 
   cursor: pointer;
+}
+
+@media (min-width: 940px) {
+  .modal form .modal-buttons button {
+    width: 260px;
+  }
 }
 
 .modal form .modal-buttons button.modal-button-send {
