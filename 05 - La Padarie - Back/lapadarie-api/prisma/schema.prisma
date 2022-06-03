@@ -8,9 +8,10 @@ generator client {
 }
 
 model Order {
-  id     Int    @id @default(autoincrement())
-  client String
-  amount Int
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  client    String
+  amount    Int
 
   @@map("order")
 }
