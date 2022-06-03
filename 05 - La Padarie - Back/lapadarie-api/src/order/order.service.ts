@@ -30,8 +30,14 @@ export class OrderService {
     return order;
   }
 
-  update(id: number, updateOrderDto: UpdateOrderDto) {
-    return `This action updates a #${id} order`;
+  async update(id: number, updateOrderDto: UpdateOrderDto) {
+    await this.findOne(id);
+    return this.prisma.order.update({
+      data: updateOrderDto,
+      where: {
+        id,
+      },
+    });
   }
 
   remove(id: number) {
