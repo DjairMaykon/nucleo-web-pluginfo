@@ -40,7 +40,10 @@ export class OrderService {
     });
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} order`;
+  async remove(id: number): Promise<Order> {
+    await this.findOne(id);
+    return this.prisma.order.delete({
+      where: { id },
+    });
   }
 }

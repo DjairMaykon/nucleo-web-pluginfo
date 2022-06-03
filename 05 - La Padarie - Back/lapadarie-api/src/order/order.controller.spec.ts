@@ -31,6 +31,11 @@ const mockedService = {
     client: 'teste',
     amount: 1,
   }),
+  remove: jest.fn().mockResolvedValue({
+    id: 1,
+    client: 'teste',
+    amount: 1,
+  }),
 };
 
 describe('OrderController', () => {
@@ -117,6 +122,24 @@ describe('OrderController', () => {
         .mockRejectedValueOnce(new HttpException('teste', 2));
 
       expect(controller.update(1, {})).rejects.toThrow(HttpException);
+    });
+  });
+
+  describe('remove', () => {
+    it('should remove order if id exists', () => {
+      expect(controller.remove(1)).resolves.toEqual({
+        id: 1,
+        client: 'teste',
+        amount: 1,
+      });
+    });
+
+    it('should return a error if id not exists', () => {
+      jest
+        .spyOn(mockedService, 'remove')
+        .mockRejectedValueOnce(new HttpException('teste', 2));
+
+      expect(controller.remove(1)).rejects.toThrow(HttpException);
     });
   });
 });

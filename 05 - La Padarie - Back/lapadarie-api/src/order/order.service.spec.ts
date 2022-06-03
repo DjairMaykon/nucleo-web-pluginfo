@@ -80,7 +80,6 @@ describe('OrderService', () => {
   describe('update', () => {
     it('should return a error if id not exists', () => {
       jest.spyOn(prisma.order, 'findUnique').mockResolvedValue(null);
-      jest.spyOn(prisma.order, 'update').mockResolvedValue(null);
 
       expect(service.update(1, {})).rejects.toThrow(HttpException);
     });
@@ -92,9 +91,28 @@ describe('OrderService', () => {
         amount: 1,
       };
       jest.spyOn(prisma.order, 'findUnique').mockResolvedValue(order);
-      jest.spyOn(prisma.order, 'update').mockResolvedValue(order);
 
       expect(service.update(1, {})).resolves.toEqual(order);
+    });
+  });
+
+  describe('remove', () => {
+    it('should return a error if id not exists', () => {
+      jest.spyOn(prisma.order, 'findUnique').mockResolvedValue(null);
+
+      expect(service.remove(1)).rejects.toThrow(HttpException);
+    });
+
+    it('should return a order removed if id exists', () => {
+      const order = {
+        id: 1,
+        client: 'Teste',
+        amount: 1,
+      };
+      jest.spyOn(prisma.order, 'findUnique').mockResolvedValue(order);
+      jest.spyOn(prisma.order, 'delete').mockResolvedValue(order);
+
+      expect(service.remove(1)).resolves.toEqual(order);
     });
   });
 });
