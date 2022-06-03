@@ -1,3 +1,4 @@
+import { HttpException, HttpStatus } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { OrderController } from './order.controller';
 import { OrderService } from './order.service';
@@ -20,6 +21,11 @@ const mockedService = {
       amount: 2,
     },
   ]),
+  findOne: jest.fn().mockResolvedValue({
+    id: 1,
+    client: 'teste',
+    amount: 1,
+  }),
 };
 
 describe('OrderController', () => {
@@ -67,5 +73,21 @@ describe('OrderController', () => {
         amount: 2,
       },
     ]);
+  });
+
+  it('should return one order if id exists', () => {
+    expect(controller.findOne(1)).resolves.toEqual({
+      id: 1,
+      client: 'teste',
+      amount: 1,
+    });
+  });
+
+  it('should return a error if id not exists', () => {
+    jest
+      .spyOn(mockedService, 'findOne')
+      .mockRejectedValueOnce(new HttpException('teste', 2));
+
+    expect(controller.findOne(1)).rejects.toThrow(HttpException);
   });
 });

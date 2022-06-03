@@ -1,3 +1,4 @@
+import { HttpException } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaService } from '../prisma/prisma.service';
 import { OrderService } from './order.service';
@@ -51,5 +52,22 @@ describe('OrderService', () => {
     jest.spyOn(prisma.order, 'findMany').mockResolvedValue(orders);
 
     expect(service.findAll()).resolves.toEqual(orders);
+  });
+
+  it('should return a order if id exists', () => {
+    jest.spyOn(prisma.order, 'findUnique').mockResolvedValue(null);
+
+    expect(service.findOne(1)).rejects.toThrow(HttpException);
+  });
+
+  it('should return a error if id not exists', () => {
+    const order = {
+      id: 1,
+      client: 'Teste',
+      amount: 1,
+    };
+    jest.spyOn(prisma.order, 'findUnique').mockResolvedValue(order);
+
+    expect(service.findOne(1)).resolves.toEqual(order);
   });
 });
