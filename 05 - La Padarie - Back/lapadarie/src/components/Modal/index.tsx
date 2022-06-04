@@ -36,6 +36,15 @@ export function Modal({ order, modalIsOpen, onCancel, onSend }: ModalProps) {
       setAmount(null);
     }
   }
+
+  function handleCancel() {
+    setCLientInvalid(false);
+    setClient(null);
+    setAmountInvalid(false);
+    setAmount(null);
+    onCancel();
+  }
+
   useEffect(() => {
     if (order) {
       setClient(order.client);
@@ -82,7 +91,7 @@ export function Modal({ order, modalIsOpen, onCancel, onSend }: ModalProps) {
           <button className="modal-button-send" onClick={handleSend}>
             Enviar
           </button>
-          <button className="modal-button-cancel" onClick={onCancel}>
+          <button className="modal-button-cancel" onClick={handleCancel}>
             Cancelar
           </button>
         </div>
