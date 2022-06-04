@@ -24,7 +24,7 @@ export function Modal({ order, modalIsOpen, onCancel, onSend }: ModalProps) {
   function handleSend() {
     setCLientInvalid(false);
     setAmountInvalid(false);
-    if (!client || client.length == 0) {
+    if (!client || client.length <= 1) {
       setCLientInvalid(true);
     }
     if (!amount || amount <= 0) {
