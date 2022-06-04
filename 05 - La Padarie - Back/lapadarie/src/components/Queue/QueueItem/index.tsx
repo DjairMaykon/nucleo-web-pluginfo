@@ -50,11 +50,11 @@ export function QueueItem({
         </header>
         <div className="item-content">
           <h2>
-            <strong>Total de pães:</strong> {order.quantity} pães
+            <strong>Total de pães:</strong> {order.amount} pães
           </h2>
           <h2>
             <strong>Total a pagar:</strong> R${" "}
-            {(order.quantity * breadPrice).toFixed(2)}
+            {(order.amount * breadPrice).toFixed(2)}
           </h2>
         </div>
       </main>

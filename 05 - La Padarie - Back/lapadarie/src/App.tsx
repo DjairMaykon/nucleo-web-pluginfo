@@ -13,7 +13,7 @@ import { useOrder } from "./hooks/useOrder";
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [orders, addOrder, editOrder, deleteOrder, breadPrice, ordersQuantity] =
+  const [orders, addOrder, editOrder, deleteOrder, breadPrice, ordersAmount] =
     useOrder();
   const [orderToEdit, setOrderToEdit] = useState<Order | undefined>(undefined);
 
@@ -22,13 +22,21 @@ function App() {
     setModalIsOpen(true);
   }
   function handleSend(client: string, quantity: number) {
+    console.log("entrou");
     if (orderToEdit) {
       editOrder(orderToEdit, client, quantity);
       setOrderToEdit(undefined);
       toast.success("Pedido editado com sucesso!");
     } else {
-      addOrder(client, quantity);
-      toast.success("Pedido adicionado com sucesso!");
+      addOrder(client, quantity)
+        .then(() => {
+          toast.success("Pedido adicionado com sucesso!");
+        })
+        .catch((err) => {
+          toast.error(
+            "Não foi possivel adicionar o pedido, por favor tente mais tarde."
+          );
+        });
     }
     setModalIsOpen(false);
   }
@@ -57,15 +65,13 @@ function App() {
             id="card-bread-sold"
             title={"Pães vendidos "}
             icon={<IconCart />}
-            value={ordersQuantity().toString()}
+            value={ordersAmount().toString()}
           />
           <Card
             id="card-cash-entry"
             title={"Entrada"}
             icon={<IconMoney />}
-            value={`R$ ${(ordersQuantity() * breadPrice)
-              .toFixed(2)
-              .toString()}`}
+            value={`R$ ${(ordersAmount() * breadPrice).toFixed(2).toString()}`}
             bgColor={"#5F3305"}
             textColor={"#FFFFFF"}
           />

@@ -9,37 +9,37 @@ type ModalProps = {
   modalIsOpen: boolean;
   order?: Order;
   onCancel: () => void;
-  onSend: (client: string, quantity: number) => void;
+  onSend: (client: string, amount: number) => void;
 };
 export function Modal({ order, modalIsOpen, onCancel, onSend }: ModalProps) {
   const [client, setClient] = useState<string | null>(
     order ? order.client : null
   );
   const [clientInvalid, setCLientInvalid] = useState<boolean>(false);
-  const [quantity, setQuantity] = useState<number | null>(
-    order ? order.quantity : null
+  const [amount, setAmount] = useState<number | null>(
+    order ? order.amount : null
   );
-  const [quantityInvalid, setQuantityInvalid] = useState<boolean>(false);
+  const [amountInvalid, setAmountInvalid] = useState<boolean>(false);
 
   function handleSend() {
     setCLientInvalid(false);
-    setQuantityInvalid(false);
+    setAmountInvalid(false);
     if (!client || client.length == 0) {
       setCLientInvalid(true);
     }
-    if (!quantity || quantity <= 0) {
-      setQuantityInvalid(true);
+    if (!amount || amount <= 0) {
+      setAmountInvalid(true);
     }
-    if (client && quantity && quantity > 0) {
-      onSend(client, quantity);
+    if (client && amount && amount > 0) {
+      onSend(client, amount);
       setClient(null);
-      setQuantity(null);
+      setAmount(null);
     }
   }
   useEffect(() => {
     if (order) {
       setClient(order.client);
-      setQuantity(order.quantity);
+      setAmount(order.amount);
     }
   }, [order]);
   return (
@@ -68,15 +68,15 @@ export function Modal({ order, modalIsOpen, onCancel, onSend }: ModalProps) {
         </div>
         <div>
           <input
-            className={quantityInvalid ? "invalid" : ""}
+            className={amountInvalid ? "invalid" : ""}
             type="number"
-            value={quantity ?? 0}
+            value={amount ?? 0}
             onChange={(e) => {
-              setQuantity(parseInt(e.target.value));
+              setAmount(parseInt(e.target.value));
             }}
             placeholder="Total de pães:"
           />
-          {quantityInvalid && <p>Total inválido</p>}
+          {amountInvalid && <p>Total inválido</p>}
         </div>
         <div className="modal-buttons">
           <button className="modal-button-send" onClick={handleSend}>

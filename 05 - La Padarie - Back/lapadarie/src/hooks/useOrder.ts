@@ -1,12 +1,13 @@
 import moment from "moment";
 import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import api from "../service/api";
 import { Order } from "../utils/types";
 
 export function useOrder(): [
   orders: Order[],
-  addOrder: (client: string, quantity: number) => void,
-  editOrder: (order: Order, client: string, quantity: number) => void,
+  addOrder: (client: string, amount: number) => Promise<void>,
+  editOrder: (order: Order, client: string, amount: number) => void,
   deleteOrder: (order: Order) => void,
   breadPrice: number,
   orderQuantity: () => number
@@ -14,11 +15,11 @@ export function useOrder(): [
   const [orders, setOrders] = useState<Order[]>([]);
   const [breadPrice, setBreadPrice] = useState<number>(0.5);
   const ordersQuantity = () =>
-    orders.reduce((sum, order) => sum + order.quantity, 0);
+    orders.reduce((sum, order) => sum + order.amount, 0);
 
   useEffect(() => {
     getOrders();
-  });
+  }, []);
 
   function getOrders() {
     api
@@ -31,25 +32,30 @@ export function useOrder(): [
       });
   }
 
-  function addOrder(client: string, quantity: number) {
-    setOrders([
-      ...orders,
-      {
-        id: orders.length,
-        client,
-        quantity,
-        createdAt: moment(),
-      },
-    ]);
+  function addOrder(client: string, amount: number) {
+    return new Promise<void>((resolve, reject) => {
+      api
+        .post<Order>("/order", {
+          client,
+          amount,
+        })
+        .then((response) => {
+          getOrders();
+          resolve();
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   }
-  function editOrder(order: Order, client?: string, quantity?: number) {
+  function editOrder(order: Order, client?: string, amount?: number) {
     setOrders(
       orders.map((s) => {
         if (s.id == order.id)
           return {
             id: s.id,
             client: client ?? s.client,
-            quantity: quantity ?? s.quantity,
+            amount: amount ?? s.amount,
             createdAt: s.createdAt,
           };
         else return s;
