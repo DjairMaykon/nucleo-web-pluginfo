@@ -4,28 +4,28 @@ import toast, { Toaster } from "react-hot-toast";
 import { IconPen } from "../../../assets/IconPen";
 import { IconTimer } from "../../../assets/IconTimer";
 import { IconTrash } from "../../../assets/IconTrash";
-import { Sale } from "../../../utils/types";
+import { Order } from "../../../utils/types";
 import "./style.css";
 
 type QueueItemProps = {
-  sale: Sale;
+  order: Order;
   breadPrice: number;
-  onDelete: (saleId: Sale) => void;
-  onEdit: (saleId: Sale) => void;
+  onDelete: (orderId: Order) => void;
+  onEdit: (orderId: Order) => void;
 };
 export function QueueItem({
-  sale,
+  order,
   breadPrice,
   onEdit,
   onDelete,
 }: QueueItemProps) {
   const [time, setTime] = useState<number | undefined>();
   useEffect(() => {
-    if (moment().diff(moment(sale.createdAt), "hours") < 1) {
+    if (moment().diff(moment(order.createdAt), "hours") < 1) {
       const interval = setInterval(() => {
-        setTime(moment().diff(moment(sale.createdAt)));
+        setTime(moment().diff(moment(order.createdAt)));
         if (time && Math.trunc(time / 1000) == 60)
-          toast(`${sale.client} esperando a um 1 minuto!`);
+          toast(`${order.client} esperando a um 1 minuto!`);
       }, 1000);
       return () => clearInterval(interval);
     }
@@ -43,26 +43,26 @@ export function QueueItem({
       <Toaster />
       <main>
         <header>
-          <h1 className="item-title">{sale.client}</h1>
-          {moment().diff(sale.createdAt, "hours") < 1
+          <h1 className="item-title">{order.client}</h1>
+          {moment().diff(order.createdAt, "hours") < 1
             ? TimerCount()
-            : moment(sale.createdAt).format("DD/MM/YY HH:mm")}
+            : moment(order.createdAt).format("DD/MM/YY HH:mm")}
         </header>
         <div className="item-content">
           <h2>
-            <strong>Total de pães:</strong> {sale.quantity} pães
+            <strong>Total de pães:</strong> {order.quantity} pães
           </h2>
           <h2>
             <strong>Total a pagar:</strong> R${" "}
-            {(sale.quantity * breadPrice).toFixed(2)}
+            {(order.quantity * breadPrice).toFixed(2)}
           </h2>
         </div>
       </main>
       <div className="icons">
-        <a className="edit-icon" onClick={() => onEdit(sale)}>
+        <a className="edit-icon" onClick={() => onEdit(order)}>
           <IconPen />
         </a>
-        <a className="delete-icon" onClick={() => onDelete(sale)}>
+        <a className="delete-icon" onClick={() => onDelete(order)}>
           <IconTrash />
         </a>
       </div>

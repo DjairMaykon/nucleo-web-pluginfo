@@ -1,19 +1,19 @@
-import { Sale } from "../../utils/types";
+import { Order } from "../../utils/types";
 import { QueueItem } from "./QueueItem";
 import "./style.css";
 
 type QueueProps = {
-  sales: Sale[];
+  orders: Order[];
   breadPrice: number;
   onAddItem: () => void;
-  onEditItem: (sale: Sale) => void;
-  onDeleteItem: (sale: Sale) => void;
+  onEditItem: (order: Order) => void;
+  onDeleteItem: (order: Order) => void;
 };
 export function Queue({
   onAddItem,
   onEditItem,
   onDeleteItem,
-  sales,
+  orders,
   breadPrice,
 }: QueueProps) {
   return (
@@ -22,10 +22,10 @@ export function Queue({
         + Adicionar pessoa a fila
       </a>
       <div className="items">
-        {sales.map((sale, i) => (
+        {orders.map((order, i) => (
           <QueueItem
             key={i}
-            sale={sale}
+            order={order}
             breadPrice={breadPrice}
             onEdit={onEditItem}
             onDelete={onDeleteItem}

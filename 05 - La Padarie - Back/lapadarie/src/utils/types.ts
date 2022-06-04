@@ -1,6 +1,6 @@
 import { Moment } from "moment";
 
-export type Sale = {
+export type Order = {
   id: number;
   client: string;
   quantity: number;

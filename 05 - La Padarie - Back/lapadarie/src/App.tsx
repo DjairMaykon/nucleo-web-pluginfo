@@ -7,27 +7,27 @@ import { IconMoney } from "./assets/IconMoney";
 import { Modal } from "./components/Modal";
 import { useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
-import { Sale } from "./utils/types";
+import { Order } from "./utils/types";
 import { Queue } from "./components/Queue";
-import { useSale } from "./hooks/useSale";
+import { useOrder } from "./hooks/useOrder";
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [sales, addSale, editSale, deleteSale, breadPrice, salesQuantity] =
-    useSale();
-  const [saleToEdit, setSaleToEdit] = useState<Sale | undefined>(undefined);
+  const [orders, addOrder, editOrder, deleteOrder, breadPrice, ordersQuantity] =
+    useOrder();
+  const [orderToEdit, setOrderToEdit] = useState<Order | undefined>(undefined);
 
-  function handleEdit(saleToEdit: Sale) {
-    setSaleToEdit(saleToEdit);
+  function handleEdit(orderToEdit: Order) {
+    setOrderToEdit(orderToEdit);
     setModalIsOpen(true);
   }
   function handleSend(client: string, quantity: number) {
-    if (saleToEdit) {
-      editSale(saleToEdit, client, quantity);
-      setSaleToEdit(undefined);
+    if (orderToEdit) {
+      editOrder(orderToEdit, client, quantity);
+      setOrderToEdit(undefined);
       toast.success("Pedido editado com sucesso!");
     } else {
-      addSale(client, quantity);
+      addOrder(client, quantity);
       toast.success("Pedido adicionado com sucesso!");
     }
     setModalIsOpen(false);
@@ -37,7 +37,7 @@ function App() {
     <>
       <Toaster />
       <Modal
-        sale={saleToEdit}
+        order={orderToEdit}
         modalIsOpen={modalIsOpen}
         onCancel={() => setModalIsOpen(false)}
         onSend={handleSend}
@@ -51,19 +51,21 @@ function App() {
             id="card-queue-quantity"
             title={"Pessoas na fila"}
             icon={<IconPeople />}
-            value={sales.length.toString()}
+            value={orders.length.toString()}
           />
           <Card
             id="card-bread-sold"
             title={"Pães vendidos "}
             icon={<IconCart />}
-            value={salesQuantity().toString()}
+            value={ordersQuantity().toString()}
           />
           <Card
             id="card-cash-entry"
             title={"Entrada"}
             icon={<IconMoney />}
-            value={`R$ ${(salesQuantity() * breadPrice).toFixed(2).toString()}`}
+            value={`R$ ${(ordersQuantity() * breadPrice)
+              .toFixed(2)
+              .toString()}`}
             bgColor={"#5F3305"}
             textColor={"#FFFFFF"}
           />
@@ -73,9 +75,9 @@ function App() {
             setModalIsOpen(true);
           }}
           onEditItem={handleEdit}
-          onDeleteItem={deleteSale}
+          onDeleteItem={deleteOrder}
           breadPrice={breadPrice}
-          sales={sales}
+          orders={orders}
         />
       </main>
       <footer id="footer-principal">

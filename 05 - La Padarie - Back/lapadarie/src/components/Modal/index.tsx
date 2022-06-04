@@ -1,23 +1,23 @@
 import { useEffect, useState } from "react";
 import ReactModal from "react-modal";
-import { Sale } from "../../utils/types";
+import { Order } from "../../utils/types";
 import "./style.css";
 
 ReactModal.setAppElement("#root");
 
 type ModalProps = {
   modalIsOpen: boolean;
-  sale?: Sale;
+  order?: Order;
   onCancel: () => void;
   onSend: (client: string, quantity: number) => void;
 };
-export function Modal({ sale, modalIsOpen, onCancel, onSend }: ModalProps) {
+export function Modal({ order, modalIsOpen, onCancel, onSend }: ModalProps) {
   const [client, setClient] = useState<string | null>(
-    sale ? sale.client : null
+    order ? order.client : null
   );
   const [clientInvalid, setCLientInvalid] = useState<boolean>(false);
   const [quantity, setQuantity] = useState<number | null>(
-    sale ? sale.quantity : null
+    order ? order.quantity : null
   );
   const [quantityInvalid, setQuantityInvalid] = useState<boolean>(false);
 
@@ -37,11 +37,11 @@ export function Modal({ sale, modalIsOpen, onCancel, onSend }: ModalProps) {
     }
   }
   useEffect(() => {
-    if (sale) {
-      setClient(sale.client);
-      setQuantity(sale.quantity);
+    if (order) {
+      setClient(order.client);
+      setQuantity(order.quantity);
     }
-  }, [sale]);
+  }, [order]);
   return (
     <ReactModal
       style={{
