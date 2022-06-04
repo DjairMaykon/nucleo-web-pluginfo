@@ -24,9 +24,18 @@ function App() {
   function handleSend(client: string, quantity: number) {
     console.log("entrou");
     if (orderToEdit) {
-      editOrder(orderToEdit, client, quantity);
-      setOrderToEdit(undefined);
-      toast.success("Pedido editado com sucesso!");
+      editOrder(orderToEdit, client, quantity)
+        .then(() => {
+          toast.success("Pedido editado com sucesso!");
+        })
+        .catch((err) => {
+          toast.error(
+            "Não foi possivel editar o pedido, por favor tente mais tarde."
+          );
+        })
+        .finally(() => {
+          setOrderToEdit(undefined);
+        });
     } else {
       addOrder(client, quantity)
         .then(() => {

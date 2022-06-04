@@ -7,7 +7,7 @@ import { Order } from "../utils/types";
 export function useOrder(): [
   orders: Order[],
   addOrder: (client: string, amount: number) => Promise<void>,
-  editOrder: (order: Order, client: string, amount: number) => void,
+  editOrder: (order: Order, client: string, amount: number) => Promise<void>,
   deleteOrder: (order: Order) => void,
   breadPrice: number,
   orderQuantity: () => number
@@ -49,18 +49,20 @@ export function useOrder(): [
     });
   }
   function editOrder(order: Order, client?: string, amount?: number) {
-    setOrders(
-      orders.map((s) => {
-        if (s.id == order.id)
-          return {
-            id: s.id,
-            client: client ?? s.client,
-            amount: amount ?? s.amount,
-            createdAt: s.createdAt,
-          };
-        else return s;
-      })
-    );
+    return new Promise<void>((resolve, reject) => {
+      api
+        .patch<Order>(`/order/${order.id}`, {
+          client,
+          amount,
+        })
+        .then((response) => {
+          getOrders();
+          resolve();
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   }
   function deleteOrder(order: Order) {
     setOrders(orders.filter((s) => s.id != order.id));
