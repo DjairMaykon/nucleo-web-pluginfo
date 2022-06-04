@@ -8,7 +8,7 @@ export function useOrder(): [
   orders: Order[],
   addOrder: (client: string, amount: number) => Promise<void>,
   editOrder: (order: Order, client: string, amount: number) => Promise<void>,
-  deleteOrder: (order: Order) => void,
+  deleteOrder: (order: Order) => Promise<void>,
   breadPrice: number,
   orderQuantity: () => number
 ] {
@@ -65,7 +65,17 @@ export function useOrder(): [
     });
   }
   function deleteOrder(order: Order) {
-    setOrders(orders.filter((s) => s.id != order.id));
+    return new Promise<void>((resolve, reject) => {
+      api
+        .delete<Order>(`/order/${order.id}`)
+        .then((response) => {
+          getOrders();
+          resolve();
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
   }
   return [orders, addOrder, editOrder, deleteOrder, breadPrice, ordersQuantity];
 }

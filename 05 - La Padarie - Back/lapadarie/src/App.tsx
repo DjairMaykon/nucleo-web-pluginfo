@@ -48,6 +48,17 @@ function App() {
     }
     setModalIsOpen(false);
   }
+  function handleDelete(orderToDelete: Order) {
+    deleteOrder(orderToDelete)
+      .then(() => {
+        toast.success("Pedido deletado com sucesso!");
+      })
+      .catch((err) => {
+        toast.error(
+          "Não foi possivel deletar o pedido, por favor tente mais tarde."
+        );
+      });
+  }
 
   return (
     <>
@@ -89,7 +100,7 @@ function App() {
             setModalIsOpen(true);
           }}
           onEditItem={handleEdit}
-          onDeleteItem={deleteOrder}
+          onDeleteItem={handleDelete}
           breadPrice={breadPrice}
           orders={orders}
         />
