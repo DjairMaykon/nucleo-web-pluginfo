@@ -22,7 +22,6 @@ function App() {
     setModalIsOpen(true);
   }
   function handleSend(client: string, quantity: number) {
-    console.log("entrou");
     if (orderToEdit) {
       editOrder(orderToEdit, client, quantity)
         .then(() => {
