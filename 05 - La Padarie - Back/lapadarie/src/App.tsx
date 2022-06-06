@@ -10,6 +10,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { Order } from "./utils/types";
 import { Queue } from "./components/Queue";
 import { useOrder } from "./hooks/useOrder";
+import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
@@ -21,6 +22,8 @@ function App() {
     deliveryOrder,
     breadPrice,
     ordersAmount,
+    deliveredOrders,
+    pendingOrders,
   ] = useOrder();
   const [orderToEdit, setOrderToEdit] = useState<Order | undefined>(undefined);
 
@@ -96,7 +99,7 @@ function App() {
             id="card-queue-quantity"
             title={"Pessoas na fila"}
             icon={<IconPeople />}
-            value={orders.length.toString()}
+            value={pendingOrders().length.toString()}
           />
           <Card
             id="card-bread-sold"
@@ -113,16 +116,33 @@ function App() {
             textColor={"#FFFFFF"}
           />
         </div>
-        <Queue
-          onAddItem={() => {
-            setModalIsOpen(true);
-          }}
-          onEditItem={handleEdit}
-          onDeleteItem={handleDelete}
-          onDeliveryItem={handleDelivery}
-          breadPrice={breadPrice}
-          orders={orders}
-        />
+        <Tabs>
+          <TabList>
+            <Tab>Pendentes</Tab>
+            <Tab>Entregues</Tab>
+          </TabList>
+          <TabPanel>
+            <Queue
+              onAddItem={() => {
+                setModalIsOpen(true);
+              }}
+              onEditItem={handleEdit}
+              onDeleteItem={handleDelete}
+              onDeliveryItem={handleDelivery}
+              breadPrice={breadPrice}
+              orders={pendingOrders()}
+            />
+          </TabPanel>
+          <TabPanel>
+            <Queue
+              onEditItem={handleEdit}
+              onDeleteItem={handleDelete}
+              onDeliveryItem={handleDelivery}
+              breadPrice={breadPrice}
+              orders={deliveredOrders()}
+            />
+          </TabPanel>
+        </Tabs>
       </main>
       <footer id="footer-principal">
         Com <span role="img">💛</span> Info Jr UFBA 2022

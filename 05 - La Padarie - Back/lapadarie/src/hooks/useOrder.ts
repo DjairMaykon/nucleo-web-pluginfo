@@ -9,11 +9,15 @@ export function useOrder(): [
   deleteOrder: (order: Order) => Promise<void>,
   deliveryOrder: (order: Order, delivered: boolean) => Promise<void>,
   breadPrice: number,
-  orderQuantity: () => number
+  orderQuantity: () => number,
+  deliveredOrders: () => Order[],
+  pendingOrders: () => Order[]
 ] {
   const [orders, setOrders] = useState<Order[]>([]);
   const [breadPrice, setBreadPrice] = useState<number>(0.5);
-  const ordersQuantity = () =>
+  const deliveredOrders = () => orders.filter((o) => o.delivered);
+  const pendingOrders = () => orders.filter((o) => !o.delivered);
+  const ordersAmount = () =>
     orders.reduce((sum, order) => sum + order.amount, 0);
 
   useEffect(() => {
@@ -98,6 +102,8 @@ export function useOrder(): [
     deleteOrder,
     deliveryOrder,
     breadPrice,
-    ordersQuantity,
+    ordersAmount,
+    deliveredOrders,
+    pendingOrders,
   ];
 }

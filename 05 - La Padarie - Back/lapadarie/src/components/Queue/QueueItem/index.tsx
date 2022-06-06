@@ -54,7 +54,7 @@ export function QueueItem({
             <span className="geekmark"></span>
           </label>
           <h1 className="item-title">{order.client}</h1>
-          {moment().diff(order.createdAt, "hours") < 1
+          {!order.delivered && moment().diff(order.createdAt, "hours") < 1
             ? TimerCount()
             : moment(order.createdAt).format("DD/MM/YY HH:mm")}
         </header>

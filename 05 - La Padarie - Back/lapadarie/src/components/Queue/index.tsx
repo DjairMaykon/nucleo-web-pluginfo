@@ -5,7 +5,7 @@ import "./style.css";
 type QueueProps = {
   orders: Order[];
   breadPrice: number;
-  onAddItem: () => void;
+  onAddItem?: () => void;
   onEditItem: (order: Order) => void;
   onDeleteItem: (order: Order) => void;
   onDeliveryItem: (order: Order, delivered: boolean) => void;
@@ -20,9 +20,11 @@ export function Queue({
 }: QueueProps) {
   return (
     <div className="queue">
-      <a className="add-item" onClick={onAddItem}>
-        + Adicionar pessoa a fila
-      </a>
+      {onAddItem && (
+        <a className="add-item" onClick={onAddItem}>
+          + Adicionar pessoa a fila
+        </a>
+      )}
       <div className="items">
         {orders.map((order, i) => (
           <QueueItem
