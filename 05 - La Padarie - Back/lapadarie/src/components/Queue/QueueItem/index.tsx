@@ -10,14 +10,16 @@ import "./style.css";
 type QueueItemProps = {
   order: Order;
   breadPrice: number;
-  onDelete: (orderId: Order) => void;
-  onEdit: (orderId: Order) => void;
+  onDelete: (order: Order) => void;
+  onEdit: (order: Order) => void;
+  onDelivery: (order: Order, delivered: boolean) => void;
 };
 export function QueueItem({
   order,
   breadPrice,
   onEdit,
   onDelete,
+  onDelivery,
 }: QueueItemProps) {
   const [time, setTime] = useState<number | undefined>();
   useEffect(() => {
@@ -43,6 +45,14 @@ export function QueueItem({
       <Toaster />
       <main>
         <header>
+          <label className="checkbox-icon">
+            <input
+              type="checkbox"
+              checked={order.delivered}
+              onChange={(e) => onDelivery(order, e.currentTarget.checked)}
+            />
+            <span className="geekmark"></span>
+          </label>
           <h1 className="item-title">{order.client}</h1>
           {moment().diff(order.createdAt, "hours") < 1
             ? TimerCount()

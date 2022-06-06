@@ -13,8 +13,15 @@ import { useOrder } from "./hooks/useOrder";
 
 function App() {
   const [modalIsOpen, setModalIsOpen] = useState<boolean>(false);
-  const [orders, addOrder, editOrder, deleteOrder, breadPrice, ordersAmount] =
-    useOrder();
+  const [
+    orders,
+    addOrder,
+    editOrder,
+    deleteOrder,
+    deliveryOrder,
+    breadPrice,
+    ordersAmount,
+  ] = useOrder();
   const [orderToEdit, setOrderToEdit] = useState<Order | undefined>(undefined);
 
   function handleEdit(orderToEdit: Order) {
@@ -56,6 +63,17 @@ function App() {
       .catch((err) => {
         toast.error(
           "Não foi possivel deletar o pedido, por favor tente mais tarde."
+        );
+      });
+  }
+  function handleDelivery(orderToDelivery: Order, delivered: boolean) {
+    deliveryOrder(orderToDelivery, delivered)
+      .then(() => {
+        toast.success("Pedido entregue com sucesso!");
+      })
+      .catch((err) => {
+        toast.error(
+          "Não foi possivel processar a entrega do pedido, por favor tente mais tarde."
         );
       });
   }
@@ -101,6 +119,7 @@ function App() {
           }}
           onEditItem={handleEdit}
           onDeleteItem={handleDelete}
+          onDeliveryItem={handleDelivery}
           breadPrice={breadPrice}
           orders={orders}
         />

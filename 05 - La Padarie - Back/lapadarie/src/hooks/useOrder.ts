@@ -1,6 +1,4 @@
-import moment from "moment";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import api from "../service/api";
 import { Order } from "../utils/types";
 
@@ -9,6 +7,7 @@ export function useOrder(): [
   addOrder: (client: string, amount: number) => Promise<void>,
   editOrder: (order: Order, client: string, amount: number) => Promise<void>,
   deleteOrder: (order: Order) => Promise<void>,
+  deliveryOrder: (order: Order, delivered: boolean) => Promise<void>,
   breadPrice: number,
   orderQuantity: () => number
 ] {
@@ -77,5 +76,28 @@ export function useOrder(): [
         });
     });
   }
-  return [orders, addOrder, editOrder, deleteOrder, breadPrice, ordersQuantity];
+  function deliveryOrder(order: Order, delivered: boolean) {
+    return new Promise<void>((resolve, reject) => {
+      api
+        .patch<Order>(`/order/${order.id}`, {
+          delivered,
+        })
+        .then((response) => {
+          getOrders();
+          resolve();
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    });
+  }
+  return [
+    orders,
+    addOrder,
+    editOrder,
+    deleteOrder,
+    deliveryOrder,
+    breadPrice,
+    ordersQuantity,
+  ];
 }

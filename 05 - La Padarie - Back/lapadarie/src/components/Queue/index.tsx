@@ -8,11 +8,13 @@ type QueueProps = {
   onAddItem: () => void;
   onEditItem: (order: Order) => void;
   onDeleteItem: (order: Order) => void;
+  onDeliveryItem: (order: Order, delivered: boolean) => void;
 };
 export function Queue({
   onAddItem,
   onEditItem,
   onDeleteItem,
+  onDeliveryItem,
   orders,
   breadPrice,
 }: QueueProps) {
@@ -29,6 +31,7 @@ export function Queue({
             breadPrice={breadPrice}
             onEdit={onEditItem}
             onDelete={onDeleteItem}
+            onDelivery={onDeliveryItem}
           />
         ))}
       </div>

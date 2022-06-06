@@ -5,4 +5,5 @@ export type Order = {
   client: string;
   amount: number;
   createdAt: Moment;
+  delivered: boolean;
 };
