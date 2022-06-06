@@ -12,6 +12,7 @@ model Order {
   createdAt DateTime @default(now())
   client    String
   amount    Int
+  delivered Boolean  @default(false)
 
   @@map("order")
 }
