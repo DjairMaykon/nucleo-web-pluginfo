@@ -7,4 +7,5 @@ export const MainStyled = styled.main`
   gap: 32px;
   max-width: 1020px;
   min-width: 324px;
+  margin: 0 6.6vw;
 `;

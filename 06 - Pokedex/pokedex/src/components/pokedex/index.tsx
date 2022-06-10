@@ -1,11 +1,11 @@
 import { Pokecard } from "./pokecard";
-import { PokedexContainer, PokedexTitle, PokedexUl } from "./styles";
+import { PokedexContainer, PokedexTitle, PokedexSection } from "./styles";
 
 export function Pokedex() {
   return (
     <PokedexContainer>
       <PokedexTitle>Pokédex</PokedexTitle>
-      <PokedexUl>
+      <PokedexSection>
         <Pokecard />
         <Pokecard />
         <Pokecard />
@@ -14,7 +14,7 @@ export function Pokedex() {
         <Pokecard />
         <Pokecard />
         <Pokecard />
-      </PokedexUl>
+      </PokedexSection>
     </PokedexContainer>
   );
 }
