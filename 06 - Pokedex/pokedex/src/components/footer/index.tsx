@@ -7,7 +7,7 @@ export function Footer() {
     font-size: 14px;
     line-height: 18px;
     letter-spacing: 0.2px;
-    color: #5f3305;
+    color: #1e293b;
 
     text-align: center;
   `;
