@@ -4,6 +4,9 @@ export const SearchDiv = styled.div`
   background: #f1f5f9;
   border-radius: 10px;
   padding: 12px 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
 `;
 
 export const SearchInput = styled.input`
