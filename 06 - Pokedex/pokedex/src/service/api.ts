@@ -6,21 +6,30 @@ const api = axios.create({
 });
 
 export function getPokemons(offset: number) {
-  return new Promise<string[]>((resolve, reject) => {
-    api
-      .get("/pokemon", {
-        params: {
-          offset,
-          limit: 21,
-        },
-      })
-      .then((apiResponse) => {
-        resolve(apiResponse.data.results.map((result: any) => result.name));
-      })
-      .catch((err) => {
-        reject(err);
-      });
-  });
+  return new Promise<{ count: number; results: string[] }>(
+    (resolve, reject) => {
+      api
+        .get("/pokemon", {
+          params: {
+            offset,
+            limit: 21,
+          },
+        })
+        .then((apiResponse) => {
+          const results = apiResponse.data.results.map(
+            (result: any) => result.name
+          );
+          const count = apiResponse.data.count;
+          resolve({
+            count,
+            results,
+          });
+        })
+        .catch((err) => {
+          reject(err);
+        });
+    }
+  );
 }
 
 export function getPokemon(name: string) {

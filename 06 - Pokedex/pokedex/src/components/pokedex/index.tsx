@@ -4,18 +4,28 @@ import { Pokecard } from "./pokecard";
 import { PokecardSkeleton } from "./pokecard/styles";
 import { PokedexContainer, PokedexTitle, PokedexSection } from "./styles";
 
-export function Pokedex() {
+type PokedexProps = {
+  search: string | undefined;
+};
+export function Pokedex({ search }: PokedexProps) {
   const [pokemons, setPokemons] = useState<string[]>([]);
   const [pokemonsOffset, setPokemonsOffset] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const [hasMore, setHasMore] = useState<boolean>(true);
   const loadMoreRef = useRef(null);
 
+  function filterPokemons(pokemon: string) {
+    return search ? pokemon.includes(search) : true;
+  }
+
   useEffect(() => {
-    getPokemons(pokemonsOffset)
-      .then((response) => {
-        setPokemons([...pokemons, ...response]);
-      })
-      .finally(() => setIsLoading(false));
+    if (hasMore)
+      getPokemons(pokemonsOffset)
+        .then((response) => {
+          setPokemons([...pokemons, ...response.results]);
+          if (response.count <= pokemonsOffset + 21) setHasMore(false);
+        })
+        .finally(() => setIsLoading(false));
   }, [pokemonsOffset]);
 
   useEffect(() => {
@@ -43,10 +53,10 @@ export function Pokedex() {
     <PokedexContainer>
       <PokedexTitle>Pokédex</PokedexTitle>
       <PokedexSection>
-        {pokemons.map((pokemonName, index) => (
+        {pokemons.filter(filterPokemons).map((pokemonName, index) => (
           <Pokecard key={index} pokemonName={pokemonName} />
         ))}
-        {!isLoading && <PokecardSkeleton ref={loadMoreRef} />}
+        {hasMore && !isLoading && <PokecardSkeleton ref={loadMoreRef} />}
       </PokedexSection>
     </PokedexContainer>
   );

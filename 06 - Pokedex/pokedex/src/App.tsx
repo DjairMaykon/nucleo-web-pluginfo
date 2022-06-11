@@ -6,14 +6,14 @@ import { Pokedex } from "./components/pokedex";
 import { SearchBar } from "./components/search_bar";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [search, setSearch] = useState<string>();
 
   return (
     <>
       <MainStyled>
         <Header />
-        <SearchBar />
-        <Pokedex />
+        <SearchBar onSearch={setSearch} />
+        <Pokedex search={search} />
       </MainStyled>
       <Footer />
     </>

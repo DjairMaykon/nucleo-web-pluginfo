@@ -51,12 +51,14 @@ export function Pokecard({ pokemonName }: PokecardProps) {
           </PokecardTypesLi>
         </PokecardTypesUl>
       </PokecardContent>
-      <img
-        width={120}
-        height={120}
-        src={pokemon.sprites.front_default.toString()}
-        alt=""
-      />
+      {pokemon.sprites.front_default && (
+        <img
+          width={120}
+          height={120}
+          src={pokemon.sprites.front_default.toString()}
+          alt=""
+        />
+      )}
     </PokecardArticle>
   );
 }
