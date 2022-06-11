@@ -1,5 +1,20 @@
 import styled from "styled-components";
 
+export const PokecardSkeleton = styled.article`
+  width: 324px;
+  height: 168px;
+  background: #eee;
+  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  border-radius: 5px;
+  background-size: 200% 100%;
+  animation: 1.5s shine linear infinite;
+  @keyframes shine {
+    to {
+      background-position-x: -200%;
+    }
+  }
+`;
+
 export const PokecardArticle = styled.article`
   display: flex;
   gap: 36px;

@@ -5,6 +5,7 @@ import { Pokemon } from "../../../utils/types";
 import {
   PokecardArticle,
   PokecardContent,
+  PokecardSkeleton,
   PokecardTitle,
   PokecardTypesLi,
   PokecardTypesUl,
@@ -22,7 +23,7 @@ export function Pokecard({ pokemonName }: PokecardProps) {
     });
   });
 
-  if (!pokemon) return <div>Loading...</div>;
+  if (!pokemon) return <PokecardSkeleton />;
 
   return (
     <PokecardArticle
@@ -37,8 +38,9 @@ export function Pokecard({ pokemonName }: PokecardProps) {
         <PokecardTypesUl>
           {pokemon.types
             .map((type) => type.type)
-            .map((type) => (
+            .map((type, index) => (
               <PokecardTypesLi
+                key={index}
                 style={{ backgroundColor: POKEMONTYPECOLOR[type.name].color }}
               >
                 {type.name}
