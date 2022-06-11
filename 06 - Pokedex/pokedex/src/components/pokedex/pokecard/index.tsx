@@ -15,8 +15,9 @@ import imgNotFound from "../../../assets/image-not-found.png";
 
 type PokecardProps = {
   pokemonName: string;
+  typesSelected: string[];
 };
-export function Pokecard({ pokemonName }: PokecardProps) {
+export function Pokecard({ pokemonName, typesSelected }: PokecardProps) {
   const [pokemon, setPokemon] = useState<Pokemon>();
 
   useEffect(() => {
@@ -26,6 +27,17 @@ export function Pokecard({ pokemonName }: PokecardProps) {
   });
 
   if (!pokemon) return <PokecardSkeleton />;
+
+  if (
+    typesSelected.length > 0 &&
+    typesSelected.some(
+      (typeSelected) =>
+        !pokemon.types.some(
+          (type) => type.type.name.toLowerCase() == typeSelected.toLowerCase()
+        )
+    )
+  )
+    return <></>;
 
   return (
     <PokecardArticle
@@ -38,19 +50,16 @@ export function Pokecard({ pokemonName }: PokecardProps) {
       <PokecardContent>
         <PokecardTitle>{pokemonName}</PokecardTitle>
         <PokecardTypesUl>
-          {pokemon.types
-            .map((type) => type.type)
-            .map((type, index) => (
-              <PokecardTypesLi
-                key={index}
-                style={{ backgroundColor: POKEMONTYPECOLOR[type.name].color }}
-              >
-                {type.name}
-              </PokecardTypesLi>
-            ))}
-          <PokecardTypesLi style={{ backgroundColor: "#A33EA1" }}>
-            POISON
-          </PokecardTypesLi>
+          {pokemon.types.map((type, index) => (
+            <PokecardTypesLi
+              key={index}
+              style={{
+                backgroundColor: POKEMONTYPECOLOR[type.type.name].color,
+              }}
+            >
+              {type.type.name}
+            </PokecardTypesLi>
+          ))}
         </PokecardTypesUl>
       </PokecardContent>
 

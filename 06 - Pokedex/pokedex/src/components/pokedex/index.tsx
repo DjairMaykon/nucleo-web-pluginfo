@@ -6,8 +6,9 @@ import { PokedexContainer, PokedexTitle, PokedexSection } from "./styles";
 
 type PokedexProps = {
   search: string | undefined;
+  types: string[];
 };
-export function Pokedex({ search }: PokedexProps) {
+export function Pokedex({ search, types }: PokedexProps) {
   const [pokemons, setPokemons] = useState<string[]>([]);
   const [pokemonsOffset, setPokemonsOffset] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -54,7 +55,11 @@ export function Pokedex({ search }: PokedexProps) {
       <PokedexTitle>Pokédex</PokedexTitle>
       <PokedexSection>
         {pokemons.filter(filterPokemons).map((pokemonName, index) => (
-          <Pokecard key={index} pokemonName={pokemonName} />
+          <Pokecard
+            key={index}
+            pokemonName={pokemonName}
+            typesSelected={types}
+          />
         ))}
         {hasMore && !isLoading && <PokecardSkeleton ref={loadMoreRef} />}
       </PokedexSection>
