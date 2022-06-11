@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import { getPokemon } from "../../../service/api";
+import { POKEMONTYPECOLOR } from "../../../utils/constants";
+import { Pokemon } from "../../../utils/types";
 import {
   PokecardArticle,
   PokecardContent,
@@ -6,15 +10,40 @@ import {
   PokecardTypesUl,
 } from "./styles";
 
-export function Pokecard() {
+type PokecardProps = {
+  pokemonName: string;
+};
+export function Pokecard({ pokemonName }: PokecardProps) {
+  const [pokemon, setPokemon] = useState<Pokemon>();
+
+  useEffect(() => {
+    getPokemon(pokemonName).then((response) => {
+      setPokemon(response);
+    });
+  });
+
+  if (!pokemon) return <div>Loading...</div>;
+
   return (
-    <PokecardArticle style={{ backgroundColor: "rgba(122, 199, 76, 0.1)" }}>
+    <PokecardArticle
+      style={{
+        backgroundColor:
+          POKEMONTYPECOLOR[pokemon.types.at(0)?.type.name ?? "normal"]
+            .colorLight,
+      }}
+    >
       <PokecardContent>
-        <PokecardTitle>Bulbasaur</PokecardTitle>
+        <PokecardTitle>{pokemonName}</PokecardTitle>
         <PokecardTypesUl>
-          <PokecardTypesLi style={{ backgroundColor: "#7AC74C" }}>
-            GRASS
-          </PokecardTypesLi>
+          {pokemon.types
+            .map((type) => type.type)
+            .map((type) => (
+              <PokecardTypesLi
+                style={{ backgroundColor: POKEMONTYPECOLOR[type.name].color }}
+              >
+                {type.name}
+              </PokecardTypesLi>
+            ))}
           <PokecardTypesLi style={{ backgroundColor: "#A33EA1" }}>
             POISON
           </PokecardTypesLi>
@@ -23,7 +52,7 @@ export function Pokecard() {
       <img
         width={120}
         height={120}
-        src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/1.svg"
+        src={pokemon.sprites.front_default.toString()}
         alt=""
       />
     </PokecardArticle>

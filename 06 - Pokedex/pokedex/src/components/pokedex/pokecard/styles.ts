@@ -9,6 +9,9 @@ export const PokecardArticle = styled.article`
 
 export const PokecardContent = styled.div`
   width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 `;
 
 export const PokecardTitle = styled.h2`
@@ -40,4 +43,5 @@ export const PokecardTypesLi = styled.li`
   line-height: 16px;
   letter-spacing: -0.03em;
   color: #ffffff;
+  text-transform: uppercase;
 `;
