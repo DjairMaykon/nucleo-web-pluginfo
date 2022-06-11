@@ -11,6 +11,8 @@ import {
   PokecardTypesUl,
 } from "./styles";
 
+import imgNotFound from "../../../assets/image-not-found.png";
+
 type PokecardProps = {
   pokemonName: string;
 };
@@ -51,14 +53,17 @@ export function Pokecard({ pokemonName }: PokecardProps) {
           </PokecardTypesLi>
         </PokecardTypesUl>
       </PokecardContent>
-      {pokemon.sprites.front_default && (
-        <img
-          width={120}
-          height={120}
-          src={pokemon.sprites.front_default.toString()}
-          alt=""
-        />
-      )}
+
+      <img
+        width={120}
+        height={120}
+        src={
+          pokemon.sprites.front_default
+            ? pokemon.sprites.front_default.toString()
+            : imgNotFound
+        }
+        alt=""
+      />
     </PokecardArticle>
   );
 }
