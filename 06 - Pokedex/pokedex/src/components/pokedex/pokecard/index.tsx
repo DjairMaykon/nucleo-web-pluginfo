@@ -26,9 +26,8 @@ export function Pokecard({ pokemonName, typesSelected }: PokecardProps) {
     });
   });
 
-  if (!pokemon) return <PokecardSkeleton />;
-
   if (
+    pokemon &&
     typesSelected.length > 0 &&
     typesSelected.some(
       (typeSelected) =>
@@ -38,6 +37,8 @@ export function Pokecard({ pokemonName, typesSelected }: PokecardProps) {
     )
   )
     return <></>;
+
+  if (!pokemon) return <PokecardSkeleton />;
 
   return (
     <PokecardArticle

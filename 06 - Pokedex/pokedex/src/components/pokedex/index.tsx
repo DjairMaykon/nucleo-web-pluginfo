@@ -1,7 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { getPokemons } from "../../service/api";
 import { Pokecard } from "./pokecard";
-import { PokecardSkeleton } from "./pokecard/styles";
 import { PokedexContainer, PokedexTitle, PokedexSection } from "./styles";
 
 type PokedexProps = {
@@ -61,7 +60,9 @@ export function Pokedex({ search, types }: PokedexProps) {
             typesSelected={types}
           />
         ))}
-        {hasMore && !isLoading && <PokecardSkeleton ref={loadMoreRef} />}
+        {hasMore && !isLoading && (
+          <article style={{ width: 0, height: 0 }} ref={loadMoreRef} />
+        )}
       </PokedexSection>
     </PokedexContainer>
   );
