@@ -4,7 +4,7 @@ import { Pokecard } from "./pokecard";
 import { PokedexContainer, PokedexTitle, PokedexSection } from "./styles";
 
 type PokedexProps = {
-  search: string | undefined;
+  search: string;
   types: string[];
 };
 export function Pokedex({ search, types }: PokedexProps) {
@@ -15,7 +15,7 @@ export function Pokedex({ search, types }: PokedexProps) {
   const loadMoreRef = useRef(null);
 
   function filterPokemons(pokemon: string) {
-    return search ? pokemon.includes(search) : true;
+    return pokemon.includes(search);
   }
 
   useEffect(() => {

@@ -7,7 +7,7 @@ import { Pokedex } from "./components/pokedex";
 import { SearchBar } from "./components/search_bar";
 
 function App() {
-  const [search, setSearch] = useState<string>();
+  const [search, setSearch] = useState<string>("");
   const [types, setTypes] = useState<string[]>([]);
 
   function handleChangeTypes(type: string) {
@@ -18,10 +18,15 @@ function App() {
     }
   }
 
+  function handleClickLogo() {
+    setSearch("");
+    setTypes([]);
+  }
+
   return (
     <>
       <MainStyled>
-        <Header />
+        <Header onClickLogo={handleClickLogo} />
         <SearchBar onSearch={setSearch} />
         <FilterBar
           onChangeTypes={handleChangeTypes}
